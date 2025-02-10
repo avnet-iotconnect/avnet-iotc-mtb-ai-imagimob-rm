@@ -1,14 +1,14 @@
 /******************************************************************************
-* File Name:   main.c
+* File Name:   wifi_config.h
 *
-* Description: This is the main file for mtb-example-ml-imagimob-deploy-ready-
-* model Code Example.
+* Description: This file contains the configuration macros required for the
+*              Wi-Fi connection.
 *
 * Related Document: See README.md
 *
 *
 *******************************************************************************
-* Copyright 2024, Cypress Semiconductor Corporation (an Infineon company) or
+* Copyright 2020-2021, Cypress Semiconductor Corporation (an Infineon company) or
 * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
 * This software, including source code, documentation and related
@@ -40,63 +40,29 @@
 * so agrees to indemnify Cypress against all liability.
 *******************************************************************************/
 
-#include "cyhal.h"
-#include "cybsp.h"
-#include "cy_retarget_io.h"
-#ifdef GESTURE_MODEL
-#include "radar.h"
-#else
-#include "audio.h"
-#endif
-#include "stdio.h"
-#include "FreeRTOS.h"
-#include "task.h"
-#include "queue.h"
-#include "timers.h"
-#include "app_task.h"
+#ifndef WIFI_CONFIG_H_
+#define WIFI_CONFIG_H_
+
+#include "cy_wcm.h"
 
 /*******************************************************************************
-* Function Name: main
-********************************************************************************
-* Summary:
-* This is the main function for CM4 CPU. It initializes BSP, creates FreeRTOS
-* audio/radar task and starts the scheduler.
-*
-* Parameters:
-*  void
-*
-* Return:
-*  int
-*
+* Macros
+********************************************************************************/
+/* SSID of the Wi-Fi Access Point to which the MQTT client connects. */
+#define WIFI_SSID                         "your-wifi-ssid"
 
-*******************************************************************************/
-int main(void)
-{
-    cy_rslt_t result;
+/* Passkey of the above mentioned Wi-Fi SSID. */
+#define WIFI_PASSWORD                     "your-wifi-password"
 
-    /* Initialize the device and board peripherals */
-    result = cybsp_init() ;
-    if (result != CY_RSLT_SUCCESS)
-    {
-        CY_ASSERT(0);
-    }
+/* Security type of the Wi-Fi access point. See 'cy_wcm_security_t' structure
+ * in "cy_wcm.h" for more details.
+ */
+#define WIFI_SECURITY                     CY_WCM_SECURITY_WPA2_AES_PSK
 
-    /* Enable global interrupts */
-    __enable_irq();
-    /* Initialize retarget-io to use the debug UART port */
-    cy_retarget_io_init(CYBSP_DEBUG_UART_TX, CYBSP_DEBUG_UART_RX, CY_RETARGET_IO_BAUDRATE);
+/* Maximum Wi-Fi re-connection limit. */
+#define MAX_WIFI_CONN_RETRIES             (120u)
 
-    printf("\x1b[2J\x1b[;H");
+/* Wi-Fi re-connection time interval in milliseconds. */
+#define WIFI_CONN_RETRY_INTERVAL_MS       (5000)
 
-    /* Create the Main IoTConnect App task. */
-    xTaskCreate(app_task, "App Task", APP_TASK_STACK_SIZE, NULL, APP_TASK_PRIORITY, NULL);
-
-
-    /* Start the FreeRTOS scheduler. */
-    vTaskStartScheduler();
-
-    /* Should never get here. */
-    CY_ASSERT(0);
-
-}
-/* [] END OF FILE */
+#endif /* WIFI_CONFIG_H_ */

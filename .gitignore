@@ -10,6 +10,9 @@
 # Pycharm and other JetBrains IDEs
 .idea/
 
+# Don't think we should be tracking this file
+/deps/assetlocks.json
+
 # ModusToolbox library repos or information about library dependencies
 libs/
 

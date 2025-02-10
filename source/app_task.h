@@ -1,14 +1,5 @@
-/******************************************************************************
-* File Name:   main.c
-*
-* Description: This is the main file for mtb-example-ml-imagimob-deploy-ready-
-* model Code Example.
-*
-* Related Document: See README.md
-*
-*
-*******************************************************************************
-* Copyright 2024, Cypress Semiconductor Corporation (an Infineon company) or
+/*******************************************************************************
+* Copyright 2020-2021, Cypress Semiconductor Corporation (an Infineon company) or
 * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
 * This software, including source code, documentation and related
@@ -39,64 +30,17 @@
 * of such system or application assumes all risk of such use and in doing
 * so agrees to indemnify Cypress against all liability.
 *******************************************************************************/
+//
+// Copyright: Avnet 2021
+// Modified by Nik Markovic <nikola.markovic@avnet.com> on 11/11/21.
+//
 
-#include "cyhal.h"
-#include "cybsp.h"
-#include "cy_retarget_io.h"
-#ifdef GESTURE_MODEL
-#include "radar.h"
-#else
-#include "audio.h"
-#endif
-#include "stdio.h"
-#include "FreeRTOS.h"
-#include "task.h"
-#include "queue.h"
-#include "timers.h"
-#include "app_task.h"
+#ifndef APP_TASK_H_
+#define APP_TASK_H_
 
-/*******************************************************************************
-* Function Name: main
-********************************************************************************
-* Summary:
-* This is the main function for CM4 CPU. It initializes BSP, creates FreeRTOS
-* audio/radar task and starts the scheduler.
-*
-* Parameters:
-*  void
-*
-* Return:
-*  int
-*
+#define APP_TASK_PRIORITY       (3)
+#define APP_TASK_STACK_SIZE     (1024 * 8)
 
-*******************************************************************************/
-int main(void)
-{
-    cy_rslt_t result;
+void app_task(void *pvParameters);
 
-    /* Initialize the device and board peripherals */
-    result = cybsp_init() ;
-    if (result != CY_RSLT_SUCCESS)
-    {
-        CY_ASSERT(0);
-    }
-
-    /* Enable global interrupts */
-    __enable_irq();
-    /* Initialize retarget-io to use the debug UART port */
-    cy_retarget_io_init(CYBSP_DEBUG_UART_TX, CYBSP_DEBUG_UART_RX, CY_RETARGET_IO_BAUDRATE);
-
-    printf("\x1b[2J\x1b[;H");
-
-    /* Create the Main IoTConnect App task. */
-    xTaskCreate(app_task, "App Task", APP_TASK_STACK_SIZE, NULL, APP_TASK_PRIORITY, NULL);
-
-
-    /* Start the FreeRTOS scheduler. */
-    vTaskStartScheduler();
-
-    /* Should never get here. */
-    CY_ASSERT(0);
-
-}
-/* [] END OF FILE */
+#endif // APP_TASK_H_

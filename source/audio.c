@@ -77,8 +77,8 @@
 
 /* RTOS tasks */
 #define AUDIO_TASK_NAME                      "audio_task"
-#define AUDIO_TASK_STACK_SIZE                (configMINIMAL_STACK_SIZE * 10)
-#define AUDIO_TASK_PRIORITY                  (configMAX_PRIORITIES - 1)
+#define AUDIO_TASK_STACK_SIZE                2048 // Use fixed size instead of (configMINIMAL_STACK_SIZE * 10)
+#define AUDIO_TASK_PRIORITY                  (2) // Use low priority instead of (configMAX_PRIORITIES - 1)
 
 /*******************************************************************************
 * Function Prototypes
@@ -187,8 +187,8 @@ cy_rslt_t audio_init(void)
     cyhal_pdm_pcm_start(&pdm_pcm);
 
     /*timer set up*/
-    Cy_SysTick_Init(CY_SYSTICK_CLOCK_SOURCE_CLK_IMO , (8000000/1000)-1);
-    Cy_SysTick_SetCallback(0, systick_isr1);        /* point to SysTick ISR to increment the 1ms count */
+    // Cy_SysTick_Init(CY_SYSTICK_CLOCK_SOURCE_CLK_IMO , (8000000/1000)-1);
+    Cy_SysTick_SetCallback(2, systick_isr1);        /* point to SysTick ISR to increment the 1ms count */
 
     /* Initialize Imagimob pre-processing library */
     IMAI_AED_init();
@@ -300,9 +300,12 @@ void audio_task(void *pvParameters)
                     }
                 }
             }
+        } else {
+            taskYIELD()
         }
-            /* Setup to read the next frame */
-            cyhal_pdm_pcm_read_async(&pdm_pcm, audio_frame, FRAME_SIZE);
+                   
+        /* Setup to read the next frame */
+        cyhal_pdm_pcm_read_async(&pdm_pcm, audio_frame, FRAME_SIZE);
     }
 
 }
