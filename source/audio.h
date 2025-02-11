@@ -70,4 +70,7 @@
 ********************************************************************************/
 cy_rslt_t create_audio_task(void);
 
+/* Returns the detected label/class. NULL if nothing was detected */
+const char* get_last_detected_label(void);
+
 #endif /* AUDIO_H_ */

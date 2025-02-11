@@ -68,7 +68,7 @@
 - 8/16/48kHz    : 24.576 MHz
 - 22.05/44.1kHz : 22.579 MHz */
 #define AUDIO_SYS_CLOCK_HZ          24576000u
-#define DETECTCOUNT                 10
+#define DETECTCOUNT                 2
 #define LED_STOP_COUNT              500
 
 /* PDM/PCM Pins */
@@ -77,7 +77,7 @@
 
 /* RTOS tasks */
 #define AUDIO_TASK_NAME                      "audio_task"
-#define AUDIO_TASK_STACK_SIZE                2048 // Use fixed size instead of (configMINIMAL_STACK_SIZE * 10)
+#define AUDIO_TASK_STACK_SIZE                (2048) // Use fixed size instead of (configMINIMAL_STACK_SIZE * 10)
 #define AUDIO_TASK_PRIORITY                  (2) // Use low priority instead of (configMAX_PRIORITIES - 1)
 
 /*******************************************************************************
@@ -103,6 +103,15 @@ static const char* LABELS[IMAI_DATA_OUT_COUNT] = IMAI_SYMBOL_MAP;
 
 /* Task handler */
 static TaskHandle_t audio_task_handler;
+
+/* Detection tracking */
+static bool was_ever_detected = false;
+
+const char* get_last_detected_label(void) {
+    const char* ret = was_ever_detected ? LABELS[1] : NULL;
+    was_ever_detected = false; // Unless the next detection triggers at some time...
+    return ret;
+}
 
 /*******************************************************************************
 * Function Name: systick_isr1
@@ -188,7 +197,7 @@ cy_rslt_t audio_init(void)
 
     /*timer set up*/
     // Cy_SysTick_Init(CY_SYSTICK_CLOCK_SOURCE_CLK_IMO , (8000000/1000)-1);
-    Cy_SysTick_SetCallback(2, systick_isr1);        /* point to SysTick ISR to increment the 1ms count */
+    Cy_SysTick_SetCallback(0, systick_isr1);        /* point to SysTick ISR to increment the 1ms count */
 
     /* Initialize Imagimob pre-processing library */
     IMAI_AED_init();
@@ -262,7 +271,7 @@ void audio_task(void *pvParameters)
                 static int prediction_count = 0;
 
                 if (IMAI_AED_dequeue(data_out) == IMAI_RET_SUCCESS)
-                {
+                {                    
                     prediction_count += 1;
                     if (data_out[1] == 1)
                     {
@@ -281,6 +290,9 @@ void audio_task(void *pvParameters)
                         cyhal_gpio_write((cyhal_gpio_t) CYBSP_USER_LED, CYBSP_LED_STATE_ON);
                         led_off = 0;
                         ledon_t = tick1;
+
+                        was_ever_detected = true;
+
                     }
                     else
                     {
@@ -305,7 +317,22 @@ void audio_task(void *pvParameters)
         }
                    
         /* Setup to read the next frame */
-        cyhal_pdm_pcm_read_async(&pdm_pcm, audio_frame, FRAME_SIZE);
+        rslt = cyhal_pdm_pcm_read_async(&pdm_pcm, audio_frame, FRAME_SIZE);
+        switch (rslt) {
+            case CYHAL_SYSPM_RSLT_ERR_PM_PENDING:
+                printf("p");
+                break;
+            case CYHAL_PDM_PCM_RSLT_ERR_ASYNC_IN_PROGRESS:
+                // printf("a");
+                break;
+            case CY_RSLT_SUCCESS:
+                // printf("o");
+                break;
+            default:
+                printf("%x", (unsigned int) rslt);
+                break;            
+        }
+        fflush(stdout);
     }
 
 }

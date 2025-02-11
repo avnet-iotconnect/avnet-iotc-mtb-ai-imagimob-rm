@@ -83,20 +83,15 @@ typedef enum UserInputYnStatus {
 } UserInputYnStatus;
 
 static UserInputYnStatus user_input_status = APP_INPUT_NONE;
-static TaskHandle_t model_task_handle = NULL;
 
 // --------------
-
-// Telemetry-related app variables:
-// There is a small chance that label and value will not be atomic as combined As this is a demo only,
-// for sake of simplicity, we will not be synchronizing tasks to solve for this issues.
-static bool is_baby_cry_detected = false;
-static float confidence_baby_cry = 0;
-static unsigned int highest_confidence_timestamp = 0; // when was the value recorded. Used in the logic to "hold" the value.
-
 static bool is_demo_mode = false;
+
+#ifdef GESTURE_MODEL
 static int reporting_interval = 1000;
-static int detection_threshold = 85;
+#else
+static int reporting_interval = 2500;
+#endif
 
 static void on_connection_status(IotConnectConnectionStatus status) {
     // Add your own status handling
@@ -224,8 +219,6 @@ static bool parse_on_off_command(const char* command, const char* name, bool *ar
 static void on_command(IotclC2dEventData data) {
     const char * const BOARD_STATUS_LED = "board-user-led";
     const char * const DEMO_MODE_CMD = "demo-mode";
-    const char * const QUALIFICATION_START_PREFIX_CMD = "aws-qualification-start "; // with a space
-    const char * const SET_DETECTION_THRESHOLD = "set-detection-threshold "; // with a space
     const char * const SET_REPORTING_INTERVAL = "set-reporting-interval "; // with a space
 
     bool command_success = false;
@@ -256,16 +249,6 @@ static void on_command(IotclC2dEventData data) {
         		message = "Reporting interval set";
         		command_success =  true;
         	}
-        } else if (0 == strncmp(SET_DETECTION_THRESHOLD, command, strlen(SET_DETECTION_THRESHOLD))) {
-        	int value = atoi(&command[strlen(SET_REPORTING_INTERVAL)]);
-        	if (0 == value) {
-                message = "Command argument parsing error";
-        	} else {
-        		detection_threshold = value;
-        		printf("Detection threshold set to %d\n", value);
-        		message = "Detection threshold set";
-        		command_success =  true;
-        	}
         } else {
             printf("Unknown command \"%s\"\n", command);
             message = "Unknown command";
@@ -293,6 +276,8 @@ static cy_rslt_t publish_telemetry(void) {
     IotclMessageHandle msg = iotcl_telemetry_create();
     iotcl_telemetry_set_string(msg, "version", APP_VERSION);
     iotcl_telemetry_set_number(msg, "random", rand() % 100); // test some random numbers
+    const char* detected_label =  get_last_detected_label();
+    iotcl_telemetry_set_string(msg, "class", detected_label ? detected_label : "not-detected");    
     iotcl_mqtt_send_telemetry(msg, false);
     iotcl_telemetry_destroy(msg);
     return CY_RSLT_SUCCESS;

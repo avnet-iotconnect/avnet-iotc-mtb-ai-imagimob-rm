@@ -70,8 +70,7 @@
 *
 
 *******************************************************************************/
-int main(void)
-{
+int main(void){
     cy_rslt_t result;
 
     /* Initialize the device and board peripherals */
@@ -88,7 +87,7 @@ int main(void)
 
     printf("\x1b[2J\x1b[;H");
 
-    /* Create the Main IoTConnect App task. */
+    /* Create the MQTT Client task. */
     xTaskCreate(app_task, "App Task", APP_TASK_STACK_SIZE, NULL, APP_TASK_PRIORITY, NULL);
 
 

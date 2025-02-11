@@ -135,6 +135,16 @@ uint32_t after;
 /*System tick variables*/
 uint32_t tick = 0;
 
+static int last_detected_gesture_index = 0;
+
+const char* get_last_detected_label(void) {
+    const char* class_map[] = IMAI_SYMBOL_MAP;
+    const char* ret = last_detected_gesture_index > 0 ? class_map[last_detected_gesture_index] : NULL;
+    last_detected_gesture_index = 0; // Unless the next detection triggers at some time...
+    return ret;
+}
+
+
 /*******************************************************************************
 * Function Name: systick_isr
 ********************************************************************************
@@ -285,7 +295,7 @@ void radar_task(void *pvParameters)
     work_arrays = new_preproc_octobertech_work_arrays(&f_cfg);
 
     /* Inference time measurement */ 
-    Cy_SysTick_Init(CY_SYSTICK_CLOCK_SOURCE_CLK_IMO , (8000000/1000)-1);
+    // Cy_SysTick_Init(CY_SYSTICK_CLOCK_SOURCE_CLK_IMO , (8000000/1000)-1);
     Cy_SysTick_SetCallback(0, systick_isr);
 
     for(;;)
@@ -378,6 +388,7 @@ void processing_task(void *pvParameters)
 
                 if (pred_idx != 0)
                 {
+                    last_detected_gesture_index = pred_idx;
                     if ((led_off - CYBSP_LED_STATE_ON) > 0)
                     {
                         printf("\r\n");
@@ -428,6 +439,7 @@ void processing_task(void *pvParameters)
                 printf("Unable to perform inference. Unknown error occurred.\n");
                 break;
         }
+        taskYIELD();
     }
 }
 
