@@ -42,6 +42,7 @@
 
 /* FreeRTOS header files */
 #include "FreeRTOS.h"
+#include "portmacro.h"
 #include "task.h"
 
 #include "cyhal.h"
@@ -86,11 +87,15 @@ static UserInputYnStatus user_input_status = APP_INPUT_NONE;
 
 // --------------
 static bool is_demo_mode = false;
+static const char* previous_detected_label = NULL;
+static TickType_t previous_detected_label_ts = 0;
 
 #ifdef GESTURE_MODEL
 static int reporting_interval = 1000;
+static int linger_interval = 5000;
 #else
 static int reporting_interval = 2500;
+static int linger_interval = 0;
 #endif
 
 static void on_connection_status(IotConnectConnectionStatus status) {
@@ -276,29 +281,10 @@ static cy_rslt_t publish_telemetry(void) {
     IotclMessageHandle msg = iotcl_telemetry_create();
     iotcl_telemetry_set_string(msg, "version", APP_VERSION);
     iotcl_telemetry_set_number(msg, "random", rand() % 100); // test some random numbers
-    const char* detected_label =  get_last_detected_label();
-    iotcl_telemetry_set_string(msg, "class", detected_label ? detected_label : "not-detected");    
+    iotcl_telemetry_set_string(msg, "class", previous_detected_label ? previous_detected_label : "not-detected");    
     iotcl_mqtt_send_telemetry(msg, false);
     iotcl_telemetry_destroy(msg);
     return CY_RSLT_SUCCESS;
-}
-
-
-static void app_model_task(void *pvParameters) {
-    TaskHandle_t *parent_task = pvParameters;
-
-    // Resume the application task. No longer needs to wait for us.
-    xTaskNotifyGive(*parent_task);
-
-    while (true) {
-        // We guess that sensor data needs data to be passed to the model at 50hz (20ms period)
-        // unsure about this....
-        vTaskDelay(pdMS_TO_TICKS(20));
-        // app_model_process();
-    }
-    while (1) {
-        taskYIELD();
-    }
 }
 
 static void user_input_yn_task (void *pvParameters) {
@@ -443,14 +429,17 @@ void app_task(void *pvParameters) {
             printf("Failed to initialize the IoTConnect SDK. Error code: %lu\n", ret);
             goto exit_cleanup;
         }
-        /*
-        if (!model_task_handle) {
-            xTaskCreate(app_model_task, "Model Task", 1024 * 8, &my_task, my_priority + 1, &model_task_handle);
-            ulTaskNotifyTake(pdTRUE, 10000);
-        }
-        */
         int max_messages = is_demo_mode ? 6000 : 300;
         for (int j = 0; iotconnect_sdk_is_connected() && j < max_messages; j++) {
+            const char* detected_label =  get_last_detected_label();
+            TickType_t now = portTICK_PERIOD_MS * xTaskGetTickCount();
+            if (NULL != detected_label) {
+                previous_detected_label = detected_label;
+                previous_detected_label_ts = now;
+            } else if (previous_detected_label_ts + linger_interval < now) {                
+                previous_detected_label = NULL; // expired
+            }
+        
             cy_rslt_t result = publish_telemetry();
             if (result != CY_RSLT_SUCCESS) {
                 break;

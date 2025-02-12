@@ -68,8 +68,6 @@
 - 8/16/48kHz    : 24.576 MHz
 - 22.05/44.1kHz : 22.579 MHz */
 #define AUDIO_SYS_CLOCK_HZ          24576000u
-#define DETECTCOUNT                 2
-#define LED_STOP_COUNT              500
 
 /* PDM/PCM Pins */
 #define PDM_DATA                    P10_5
@@ -114,47 +112,6 @@ const char* get_last_detected_label(void) {
 }
 
 /*******************************************************************************
-* Function Name: systick_isr1
-********************************************************************************
-* Summary: This increments every time the SysTick counter decrements to 0.
-*
-* Parameters:
-*   None
-*
-* Return:
-*   None
-*
-*
-*******************************************************************************/
-void systick_isr1(void)
-{
-    tick1++;
-}
-
-
-/*******************************************************************************
-* Function Name: get_time_from_millisec_audio
-********************************************************************************
-* Summary: This function prints the time when a output class is detected.
-*
-* Parameters:
-*   milliseconds : time when a output class is detected.
-*   timeString   : time of detected class in hr:m:s format.
-*
-* Return:
-*   None
-*
-*
-*******************************************************************************/
-void get_time_from_millisec_audio(unsigned long milliseconds, char* timeString) {
-  unsigned int seconds = (milliseconds / 1000) % 60;
-  unsigned int minutes = (milliseconds / (1000 * 60)) % 60;
-  unsigned int hours = (milliseconds / (1000 * 60 * 60));
-  sprintf(timeString, "%02u:%02u:%02u", hours, minutes, seconds);
-}
-
-
-/*******************************************************************************
 * Function Name: audio_init
 ********************************************************************************
 * Summary:
@@ -186,18 +143,13 @@ cy_rslt_t audio_init(void)
     /* Init the clocks */
     clock_init();
 
-    /* Initialize the User LED */
-    cyhal_gpio_init(CYBSP_USER_LED, CYHAL_GPIO_DIR_OUTPUT, CYHAL_GPIO_DRIVE_STRONG, CYBSP_LED_STATE_OFF);
-    
+ 
     /* Initialize the PDM/PCM block */
     cyhal_pdm_pcm_init(&pdm_pcm, PDM_DATA, PDM_CLK, &audio_clock, &pdm_pcm_cfg);
     cyhal_pdm_pcm_register_callback(&pdm_pcm, pdm_pcm_isr_handler, NULL);
     cyhal_pdm_pcm_enable_event(&pdm_pcm, CYHAL_PDM_PCM_ASYNC_COMPLETE, CYHAL_ISR_PRIORITY_DEFAULT, true);
     cyhal_pdm_pcm_start(&pdm_pcm);
 
-    /*timer set up*/
-    // Cy_SysTick_Init(CY_SYSTICK_CLOCK_SOURCE_CLK_IMO , (8000000/1000)-1);
-    Cy_SysTick_SetCallback(0, systick_isr1);        /* point to SysTick ISR to increment the 1ms count */
 
     /* Initialize Imagimob pre-processing library */
     IMAI_AED_init();
@@ -230,7 +182,6 @@ void audio_task(void *pvParameters)
         CY_ASSERT(0);
     }
     int16_t  audio_frame[FRAME_SIZE] = {0};
-    unsigned long start_t = tick1;
     for(;;)
     {
         /* Check if any microphone has data to process */
@@ -264,51 +215,14 @@ void audio_task(void *pvParameters)
 
                 /* Pass audio data for enqueue */
                 IMAI_AED_enqueue(&data_in);
-                /* LED variables */
-                static int led_off = 0;
-                int ledon_t = 0;
-
-                static int prediction_count = 0;
 
                 if (IMAI_AED_dequeue(data_out) == IMAI_RET_SUCCESS)
                 {                    
-                    prediction_count += 1;
                     if (data_out[1] == 1)
                     {
-                        /* new line when LED from off to on */
-                        if ((led_off - CYBSP_LED_STATE_ON) > 0)
-                        {
-                            printf("\r\n");
-                        }
-
                         /* print triggered class and the triggered time since IMAI Initial. */
-                        unsigned long t = tick1 - start_t;
-                        char timeString[9];
-                        get_time_from_millisec_audio(t, timeString);
-                        printf("%s %s\r\n", LABELS[1], timeString);
-
-                        cyhal_gpio_write((cyhal_gpio_t) CYBSP_USER_LED, CYBSP_LED_STATE_ON);
-                        led_off = 0;
-                        ledon_t = tick1;
-
+                        printf("Detected %s\r\n", LABELS[1]);
                         was_ever_detected = true;
-
-                    }
-                    else
-                    {
-                        /* only print non-label class every 10 predictions  */
-                        if (prediction_count > DETECTCOUNT)
-                        {
-                            printf(".");
-                            fflush( stdout );
-                            prediction_count = 0;
-                        }
-                        /* turn off LED after the LED is on for 500ms */
-                        if((tick1 - ledon_t) > LED_STOP_COUNT)
-                        {
-                            cyhal_gpio_write((cyhal_gpio_t) CYBSP_USER_LED, CYBSP_LED_STATE_OFF);
-                        }
-                        led_off = 1;
                     }
                 }
             }
@@ -317,22 +231,7 @@ void audio_task(void *pvParameters)
         }
                    
         /* Setup to read the next frame */
-        rslt = cyhal_pdm_pcm_read_async(&pdm_pcm, audio_frame, FRAME_SIZE);
-        switch (rslt) {
-            case CYHAL_SYSPM_RSLT_ERR_PM_PENDING:
-                printf("p");
-                break;
-            case CYHAL_PDM_PCM_RSLT_ERR_ASYNC_IN_PROGRESS:
-                // printf("a");
-                break;
-            case CY_RSLT_SUCCESS:
-                // printf("o");
-                break;
-            default:
-                printf("%x", (unsigned int) rslt);
-                break;            
-        }
-        fflush(stdout);
+        cyhal_pdm_pcm_read_async(&pdm_pcm, audio_frame, FRAME_SIZE);
     }
 
 }

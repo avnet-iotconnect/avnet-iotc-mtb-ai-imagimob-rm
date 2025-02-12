@@ -84,6 +84,11 @@ int main(void){
     __enable_irq();
     /* Initialize retarget-io to use the debug UART port */
     cy_retarget_io_init(CYBSP_DEBUG_UART_TX, CYBSP_DEBUG_UART_RX, CY_RETARGET_IO_BAUDRATE);
+    /* Initialize the User LED */
+    result = cyhal_gpio_init(CYBSP_USER_LED, CYHAL_GPIO_DIR_OUTPUT,
+                             CYHAL_GPIO_DRIVE_STRONG, CYBSP_LED_STATE_OFF);
+
+    CY_ASSERT(CY_RSLT_SUCCESS == result);
 
     printf("\x1b[2J\x1b[;H");
 
