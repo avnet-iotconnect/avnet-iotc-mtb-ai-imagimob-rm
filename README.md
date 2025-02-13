@@ -58,11 +58,15 @@ and note the following:
 ## Running the Demo
 
 For audio models, once the board connects to IoTConnect, it will start processing microphone input and attempt to detect the corresponding sound. 
-This can be tested by placing the board next to the PC speakers and playing an audio file like [this one](https://www.youtube.com/watch?v=j3glwtXrj0c)
-for example in case of the Baby Cry model.
+This can be tested by placing the board in such way so that the microphone close to the PC speaker.
+For best results, the microphone should be placed very close and pointed directly towards the speaker.
 
-For radar models, please refer to the [Operation Section](https://github.com/Infineon/mtb-example-ml-imagimob-deploy-ready-model/blob/master/README.md#operation)
-of the original Infineon's project, and see the gesture animated gifs at the bottom of the section.
+The following YouTube sound clips can be used for testing (sorted by recognition quality):
+  * [Siren](https://www.youtube.com/watch?v=s5bwBS27A1g)
+  * [Alarm](https://www.youtube.com/watch?v=Qp09X74kjBc)
+  * [Snore](https://www.youtube.com/watch?v=dXKCapH-vx8)
+  * [Cough](https://www.youtube.com/watch?v=hFIJaB6kVzk)
+  * [Baby Cry](https://www.youtube.com/watch?v=Rwj1_eWltJQ&t=227s)
 
 For the gesture model, the application sends data once every second by default (see commands below).
 For audio models, the application sends data once every 2.5 seconds by default. 
