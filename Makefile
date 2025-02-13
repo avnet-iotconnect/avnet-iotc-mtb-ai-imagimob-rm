@@ -46,7 +46,7 @@ TARGET=APP_CY8CKIT-062S2-AI
 #
 # If APPNAME is edited, ensure to update or regenerate launch
 # configurations for your IDE.
-APPNAME=mtb-example-ml-imagimob-deploy-ready-model
+APPNAME=avnet-iotc-mtb-ai-imagimob-rm
 
 # Name of toolchain to use. Options include:
 #
