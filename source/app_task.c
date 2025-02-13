@@ -250,6 +250,9 @@ static void on_command(IotclC2dEventData data) {
         if (parse_on_off_command(command, BOARD_STATUS_LED, &arg_parsing_success, &led_on, &message)) {
             command_success = arg_parsing_success;
             if (arg_parsing_success) {
+                #ifdef APP_LEDS_INVERSE
+                led_on = !led_on;
+                #endif
                 cyhal_gpio_write(CYBSP_USER_LED, led_on);
             }
         } else if (parse_on_off_command(command, DEMO_MODE_CMD,  &arg_parsing_success, &is_demo_mode, &message)) {

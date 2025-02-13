@@ -85,8 +85,16 @@ int main(void){
     /* Initialize retarget-io to use the debug UART port */
     cy_retarget_io_init(CYBSP_DEBUG_UART_TX, CYBSP_DEBUG_UART_RX, CY_RETARGET_IO_BAUDRATE);
     /* Initialize the User LED */
+
+    /* Workaround for the inverse LED */
+    #ifdef APP_LEDS_INVERSE
+    #define INITIAL_STATE CYBSP_LED_STATE_ON
+    #else
+    #define INITIAL_STATE CYBSP_LED_STATE_OFF
+    #endif
+
     result = cyhal_gpio_init(CYBSP_USER_LED, CYHAL_GPIO_DIR_OUTPUT,
-                             CYHAL_GPIO_DRIVE_STRONG, CYBSP_LED_STATE_OFF);
+                             CYHAL_GPIO_DRIVE_STRONG, INITIAL_STATE);
 
     CY_ASSERT(CY_RSLT_SUCCESS == result);
 
