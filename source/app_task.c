@@ -438,7 +438,13 @@ void app_task(void *pvParameters) {
         goto exit_cleanup;
     }
 
-    cyhal_gpio_write(CYBSP_USER_LED, false); // USER_LED is active low
+    #ifdef APP_LEDS_INVERSE
+    const bool app_led_initial = true;
+    #else
+    const bool app_led_initial = false;
+    #endif
+    cyhal_gpio_write(CYBSP_USER_LED, app_led_initial); // USER_LED is active low
+
     /* Create the RTOS task */
 #ifdef GESTURE_MODEL
     create_radar_task();
