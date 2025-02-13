@@ -63,9 +63,9 @@ For best results, the microphone should be placed very close and pointed directl
 
 The following YouTube sound clips can be used for testing (sorted by recognition quality):
   * [Siren](https://www.youtube.com/watch?v=s5bwBS27A1g)
-  * [Alarm](https://www.youtube.com/watch?v=Qp09X74kjBc)
+  * [Alarm](https://www.youtube.com/watch?v=hFIJaB6kVzk)
   * [Snore](https://www.youtube.com/watch?v=dXKCapH-vx8)
-  * [Cough](https://www.youtube.com/watch?v=hFIJaB6kVzk)
+  * [Cough](https://www.youtube.com/watch?v=Qp09X74kjBc)
   * [Baby Cry](https://www.youtube.com/watch?v=Rwj1_eWltJQ&t=227s)
 
 For radar models, please refer to the [Operation Section](https://github.com/Infineon/mtb-example-ml-imagimob-deploy-ready-model/blob/master/README.md#operation) of the original Infineon's project,
