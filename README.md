@@ -68,9 +68,11 @@ The following YouTube sound clips can be used for testing (sorted by recognition
   * [Cough](https://www.youtube.com/watch?v=hFIJaB6kVzk)
   * [Baby Cry](https://www.youtube.com/watch?v=Rwj1_eWltJQ&t=227s)
 
-For the gesture model, the application sends data once every second by default (see commands below).
-For audio models, the application sends data once every 2.5 seconds by default. 
-The AI models internally evaluate several times per second. 
+For radar models, please refer to the [Operation Section](https://github.com/Infineon/mtb-example-ml-imagimob-deploy-ready-model/blob/master/README.md#operation) of the original Infineon's project,
+and see the gesture animations at the bottom of the section.
+Note that for best detection, the 062S2-AI board **should not be placed on, or near a flat surface**. The surface
+behind the board will likely interfere with the sensor. The best way to test gestures on this board
+is to hold the board by the USB cable, like shown in the animations. 
 
 When the appropriate sound or gesture is recognized in-between telemetry reporting events,
 the *class* telemetry value will be reported as a string with the name of the last detected class (label).
