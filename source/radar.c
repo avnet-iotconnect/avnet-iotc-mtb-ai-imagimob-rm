@@ -88,7 +88,6 @@
 static void radar_task(void *pvParameters);
 static void processing_task(void *pvParameters);
 
-static int32_t init_leds(void);
 static int32_t radar_init(void);
 static void xensiv_bgt60trxx_interrupt_handler(void* args, cyhal_gpio_event_t event);
 
@@ -114,7 +113,7 @@ static cyhal_spi_t spi_obj;
 static xensiv_bgt60trxx_mtb_t bgt60_obj;
 
 static TaskHandle_t radar_task_handler;
-static TaskHandle_t processing_task_handler;
+static TaskHandle_t processing_task_handle;
 radar_data_manager_s mgr;
 
 float32_t gesture_frame[NUM_SAMPLES_PER_CHIRP * NUM_CHIRPS_PER_FRAME * XENSIV_BGT60TRXX_CONF_NUM_RX_ANTENNAS];
@@ -132,9 +131,6 @@ cyhal_lptimer_t lptimer_obj;
 uint32_t before;
 uint32_t after;
 
-/*System tick variables*/
-uint32_t tick = 0;
-
 static int last_detected_gesture_index = 0;
 
 const char* get_last_detected_label(void) {
@@ -143,27 +139,6 @@ const char* get_last_detected_label(void) {
     last_detected_gesture_index = 0; // Unless the next detection triggers at some time...
     return ret;
 }
-
-
-/*******************************************************************************
-* Function Name: systick_isr
-********************************************************************************
-* Summary: This increments every time the SysTick counter decrements to 0.
-*
-* Parameters:
-*   None
-*
-* Return:
-*   None
-*
-*
-*******************************************************************************/
-void systick_isr(void)
-
-{
-    tick++;
-}
-
 
 /*******************************************************************************
 * Function Name: read_radar_data
@@ -236,12 +211,10 @@ void deinterleave_antennas(uint16_t * buffer_ptr)
 ********************************************************************************
 * Summary:
 * This is the main task.
-*    1. Creates a timer to toggle user LED
-*    2. Create the processing RTOS task
-*    3. Initializes the hardware interface to the sensor and LEDs
-*    4. Initializes the radar device
-*    5. Initializes gesture library
-*    6. In an infinite loop
+*    1. Create the processing RTOS task
+*    2. Initializes the radar device
+*    3. Initializes gesture library
+*    4. In an infinite loop
 *       - Waits for interrupt from radar device indicating availability of data
 *       - Read from software buffer the raw radar frame
 *       - De-interleaves the radar data frame
@@ -261,7 +234,7 @@ void radar_task(void *pvParameters)
 
     uint16_t *data_buff = NULL;
 
-    if (xTaskCreate(processing_task, PROCESSING_TASK_NAME, PROCESSING_TASK_STACK_SIZE, NULL, PROCESSING_TASK_PRIORITY, &processing_task_handler) != pdPASS)
+    if (xTaskCreate(processing_task, PROCESSING_TASK_NAME, PROCESSING_TASK_STACK_SIZE, NULL, PROCESSING_TASK_PRIORITY, &processing_task_handle) != pdPASS)
     {
         CY_ASSERT(0);
     }
@@ -271,10 +244,6 @@ void radar_task(void *pvParameters)
         CY_ASSERT(0);
     }
 
-    if (init_leds () != 0)
-    {
-        CY_ASSERT(0);
-    }
 
     mgr.subscribe(radar_task_handler);
 
@@ -294,10 +263,6 @@ void radar_task(void *pvParameters)
     /* Init preprocessing */
     work_arrays = new_preproc_octobertech_work_arrays(&f_cfg);
 
-    /* Inference time measurement */ 
-    // Cy_SysTick_Init(CY_SYSTICK_CLOCK_SOURCE_CLK_IMO , (8000000/1000)-1);
-    Cy_SysTick_SetCallback(0, systick_isr);
-
     for(;;)
     {
         /* Wait for the GPIO interrupt to indicate that another slice is available */
@@ -310,7 +275,7 @@ void radar_task(void *pvParameters)
         mgr.ack_data_read(1);
 
         /* Tell processing task to take over */
-        xTaskNotifyGive(processing_task_handler);
+        xTaskNotifyGive(processing_task_handle);
 
     }
 }
@@ -365,18 +330,12 @@ void processing_task(void *pvParameters)
         }
         int imai_result = IMAI_RED_dequeue(model_out);
         int pred_idx = 0;
-        static int prediction_count = 0;
-
-        /* LED variables */
-        static int led_off = 0;
-        int ledon_t = 0;
 
         switch (imai_result)
         {
             static uint8_t success_flag;
             case IMAI_RET_SUCCESS:
                 success_flag = 1;
-                prediction_count += 1;
 
                 for (uint8_t i = 0; i < IMAI_DATA_OUT_COUNT; i++)
                 {
@@ -389,33 +348,8 @@ void processing_task(void *pvParameters)
                 if (pred_idx != 0)
                 {
                     last_detected_gesture_index = pred_idx;
-                    if ((led_off - CYBSP_LED_STATE_ON) > 0)
-                    {
-                        printf("\r\n");
-                    }
                     /* print triggered class and the triggered time since IMAI Initial. */
-                    printf("%s\n", class_map[pred_idx]);
-                    cyhal_gpio_write(LED_RGB_GREEN, true); /* turn on green LED */
-
-                    led_off = 0;
-                    ledon_t = tick;
-                }
-                else               
-                {
-                    /* only print non-label class very 10 predictions */
-                    if (prediction_count>9)
-                    {
-                        printf(".");
-                        fflush( stdout );
-                        prediction_count = 0;
-                    }
-                    /* turn off LED after the LED is on for 500ms */
-                    if((tick - ledon_t) > 500)
-                    {
-                        /* turn on green LED */
-                        cyhal_gpio_write(LED_RGB_GREEN, false);
-                    }
-                    led_off = 1;
+                    printf("Detected %s\n", class_map[pred_idx]);
                 }
 
                 break;
@@ -442,29 +376,6 @@ void processing_task(void *pvParameters)
         taskYIELD();
     }
 }
-
-
-/*******************************************************************************
-* Function Name: get_time_from_millisec_radar
-********************************************************************************
-* Summary: This function prints the time when a output class is detected.
-*    
-* Parameters:
-*   milliseconds : time when a output class is detected.
-*   timeString   : time of detected class in hr:m:s format.
-*
-* Return:
-*   None
-*
-*
-*******************************************************************************/
-void get_time_from_millisec_radar(unsigned long milliseconds, char* timeString) {
-  unsigned int seconds = (milliseconds / 1000) % 60;
-  unsigned int minutes = (milliseconds / (1000 * 60)) % 60;
-  unsigned int hours = (milliseconds / (1000 * 60 * 60));
-  sprintf(timeString, "%02u:%02u:%02u", hours, minutes, seconds);
-}
-
 
 /*******************************************************************************
 * Function Name: radar_init
@@ -561,38 +472,6 @@ static void xensiv_bgt60trxx_interrupt_handler(void *args, cyhal_gpio_irq_event_
 
     mgr.run(true);
 }
-
-
-/*******************************************************************************
-* Function Name: init_leds
-********************************************************************************
-* Summary:
-* This function initializes the GPIOs for LEDs and set them to off state.
-* Parameters:
-*  void
-*
-* Return:
-*  Success or error
-*
-*******************************************************************************/
-static int32_t init_leds(void)
-{
-
-    if(cyhal_gpio_init(LED_RGB_RED, CYHAL_GPIO_DIR_OUTPUT, CYHAL_GPIO_DRIVE_STRONG, false)!= CY_RSLT_SUCCESS)
-    {
-        printf("[MSG] ERROR: GPIO initialization for LED_RGB_RED failed\n");
-        return -1;
-    }
-
-    if( cyhal_gpio_init(LED_RGB_GREEN, CYHAL_GPIO_DIR_OUTPUT, CYHAL_GPIO_DRIVE_STRONG, false)!= CY_RSLT_SUCCESS)
-    {
-        printf("[MSG] ERROR: GPIO initialization for LED_RGB_GREEN failed\n");
-        return -1;
-    }
-
-    return 0;
-}
-
 
 /*******************************************************************************
  * Function Name: create_radar_task

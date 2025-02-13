@@ -71,11 +71,18 @@
 #include "app_task.h"
 
 
-#define APP_VERSION "03.02.00"
-
-#define LABEL_BABY_CRY 	1
-#define LABEL_UNLABELED	0
-
+#define APP_VERSION_BASE "01.00.00"
+#if defined(GESTURE_MODEL)
+#define APP_VERSION ("G-" APP_VERSION_BASE)
+#elif defined(ALARM_MODEL)
+#define APP_VERSION ("A-" APP_VERSION_BASE)
+#elif defined(BABYCRY_MODEL)
+#define APP_VERSION ("B-" APP_VERSION_BASE)
+#elif defined(SIREN_MODEL)
+#define APP_VERSION ("S-" APP_VERSION_BASE)
+#elif defined(SNORE_MODEL)
+#define APP_VERSION ("N-" APP_VERSION_BASE)
+#endif
 
 typedef enum UserInputYnStatus {
 	APP_INPUT_NONE = 0,
@@ -210,7 +217,7 @@ static bool parse_on_off_command(const char* command, const char* name, bool *ar
             *message = "Value is now \"off\"";
             *arg_parsing_success = true;
         } else {
-            *message = "Command argument";
+            *message = "Command argument should be \"on\" or \"off\"";
             *arg_parsing_success = false;
         }
         // we matches the command
@@ -225,6 +232,7 @@ static void on_command(IotclC2dEventData data) {
     const char * const BOARD_STATUS_LED = "board-user-led";
     const char * const DEMO_MODE_CMD = "demo-mode";
     const char * const SET_REPORTING_INTERVAL = "set-reporting-interval "; // with a space
+    const char * const SET_LINGER_INTERVAL = "set-linger-interval "; // with a space
 
     bool command_success = false;
     const char * message = NULL;
@@ -252,6 +260,16 @@ static void on_command(IotclC2dEventData data) {
         		reporting_interval = value;
         		printf("Reporting interval set to %d\n", value);
         		message = "Reporting interval set";
+        		command_success =  true;
+        	}
+        } else if (0 == strncmp(SET_LINGER_INTERVAL, command, strlen(SET_LINGER_INTERVAL))) {
+        	int value = atoi(&command[strlen(SET_LINGER_INTERVAL)]);
+        	if (0 == value) {
+                message = "Argument parsing error";
+        	} else {
+        		linger_interval = value;
+        		printf("Linger interval set to %d\n", value);
+        		message = "Linger interval set";
         		command_success =  true;
         	}
         } else {
