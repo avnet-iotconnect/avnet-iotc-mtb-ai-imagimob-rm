@@ -78,6 +78,8 @@
 #define APP_VERSION ("A-" APP_VERSION_BASE)
 #elif defined(BABYCRY_MODEL)
 #define APP_VERSION ("B-" APP_VERSION_BASE)
+#elif defined(COUGH_MODEL)
+#define APP_VERSION ("C-" APP_VERSION_BASE)
 #elif defined(SIREN_MODEL)
 #define APP_VERSION ("S-" APP_VERSION_BASE)
 #elif defined(SNORE_MODEL)
