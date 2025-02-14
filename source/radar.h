@@ -53,5 +53,6 @@
 * Function Prototypes
 ********************************************************************************/
 cy_rslt_t create_radar_task(void);
+const char* get_last_detected_label(void);
 
 #endif /* RADAR_H_ */

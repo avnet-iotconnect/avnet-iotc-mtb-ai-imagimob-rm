@@ -1,13 +1,5 @@
-/******************************************************************************
-* File Name:   audio.h
-*
-* Description: This file contains the function prototypes and variables
-*              used in audio.c.
-*
-* Related Document: See README.md
-*
-*******************************************************************************
-* Copyright 2024, Cypress Semiconductor Corporation (an Infineon company) or
+/*******************************************************************************
+* Copyright 2020-2021, Cypress Semiconductor Corporation (an Infineon company) or
 * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
 * This software, including source code, documentation and related
@@ -38,39 +30,17 @@
 * of such system or application assumes all risk of such use and in doing
 * so agrees to indemnify Cypress against all liability.
 *******************************************************************************/
+//
+// Copyright: Avnet 2021
+// Modified by Nik Markovic <nikola.markovic@avnet.com> on 11/11/21.
+//
 
-#ifndef AUDIO_H_
-#define AUDIO_H_
+#ifndef APP_TASK_H_
+#define APP_TASK_H_
 
-#include <stdlib.h>
-#include "cybsp.h"
-#include "cyhal.h"
-#include "cy_result.h"
-#ifdef COUGH_MODEL
-#include "cough_lib.h"
-#endif
-#ifdef ALARM_MODEL
-#include "alarm_siren_lib.h"
-#endif
-#ifdef BABYCRY_MODEL
-#include "babycry_lib.h"
-#endif
-#ifdef SIREN_MODEL
-#include "siren_lib.h"
-#endif
-#ifdef SNORE_MODEL
-#include "snore_lib.h"
-#endif
+#define APP_TASK_PRIORITY       (3)
+#define APP_TASK_STACK_SIZE     (1024 * 8)
 
-#include "stdio.h"
+void app_task(void *pvParameters);
 
-
-/*******************************************************************************
-* Function Prototypes
-********************************************************************************/
-cy_rslt_t create_audio_task(void);
-
-/* Returns the detected label/class. NULL if nothing was detected */
-const char* get_last_detected_label(void);
-
-#endif /* AUDIO_H_ */
+#endif // APP_TASK_H_

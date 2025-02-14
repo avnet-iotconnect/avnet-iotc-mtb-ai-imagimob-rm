@@ -1,13 +1,14 @@
 /******************************************************************************
-* File Name:   audio.h
+* File Name:   wifi_config.h
 *
-* Description: This file contains the function prototypes and variables
-*              used in audio.c.
+* Description: This file contains the configuration macros required for the
+*              Wi-Fi connection.
 *
 * Related Document: See README.md
 *
+*
 *******************************************************************************
-* Copyright 2024, Cypress Semiconductor Corporation (an Infineon company) or
+* Copyright 2020-2021, Cypress Semiconductor Corporation (an Infineon company) or
 * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
 * This software, including source code, documentation and related
@@ -39,38 +40,29 @@
 * so agrees to indemnify Cypress against all liability.
 *******************************************************************************/
 
-#ifndef AUDIO_H_
-#define AUDIO_H_
+#ifndef WIFI_CONFIG_H_
+#define WIFI_CONFIG_H_
 
-#include <stdlib.h>
-#include "cybsp.h"
-#include "cyhal.h"
-#include "cy_result.h"
-#ifdef COUGH_MODEL
-#include "cough_lib.h"
-#endif
-#ifdef ALARM_MODEL
-#include "alarm_siren_lib.h"
-#endif
-#ifdef BABYCRY_MODEL
-#include "babycry_lib.h"
-#endif
-#ifdef SIREN_MODEL
-#include "siren_lib.h"
-#endif
-#ifdef SNORE_MODEL
-#include "snore_lib.h"
-#endif
-
-#include "stdio.h"
-
+#include "cy_wcm.h"
 
 /*******************************************************************************
-* Function Prototypes
+* Macros
 ********************************************************************************/
-cy_rslt_t create_audio_task(void);
+/* SSID of the Wi-Fi Access Point to which the MQTT client connects. */
+#define WIFI_SSID                         "your-wifi-ssid"
 
-/* Returns the detected label/class. NULL if nothing was detected */
-const char* get_last_detected_label(void);
+/* Passkey of the above mentioned Wi-Fi SSID. */
+#define WIFI_PASSWORD                     "your-wifi-password"
 
-#endif /* AUDIO_H_ */
+/* Security type of the Wi-Fi access point. See 'cy_wcm_security_t' structure
+ * in "cy_wcm.h" for more details.
+ */
+#define WIFI_SECURITY                     CY_WCM_SECURITY_WPA2_AES_PSK
+
+/* Maximum Wi-Fi re-connection limit. */
+#define MAX_WIFI_CONN_RETRIES             (120u)
+
+/* Wi-Fi re-connection time interval in milliseconds. */
+#define WIFI_CONN_RETRY_INTERVAL_MS       (5000)
+
+#endif /* WIFI_CONFIG_H_ */

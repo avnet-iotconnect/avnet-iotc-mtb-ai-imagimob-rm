@@ -40,13 +40,13 @@ MTB_TYPE=COMBINED
 # To change the target, it is recommended to use the Library manager
 # ('make library-manager' from command line), which will also update Eclipse IDE launch
 # configurations.
-TARGET=CY8CKIT-062S2-AI
+TARGET=APP_CY8CKIT-062S2-AI
 
 # Name of application (used to derive name of final linked file).
 #
 # If APPNAME is edited, ensure to update or regenerate launch
 # configurations for your IDE.
-APPNAME=mtb-example-ml-imagimob-deploy-ready-model
+APPNAME=avnet-iotc-mtb-ai-imagimob-rm
 
 # Name of toolchain to use. Options include:
 #
@@ -86,7 +86,7 @@ MTB_SUPPORTED_TOOLCHAINS?=GCC_ARM
 # ... then code in directories named COMPONENT_foo and COMPONENT_bar will be
 # added to the build
 #
-COMPONENTS+=ML_TFLM_INTERPRETER IFX_CMSIS_NN FREERTOS RTOS_AWARE
+COMPONENTS+=ML_TFLM_INTERPRETER IFX_CMSIS_NN FREERTOS RTOS_AWARE LWIP MBEDTLS SECURE_SOCKETS
 
 # Like COMPONENTS, but disable optional code that was enabled by default.
 DISABLE_COMPONENTS=
@@ -99,7 +99,7 @@ SOURCES=
 
 # Like SOURCES, but for include directories. Value should be paths to
 # directories (without a leading -I).
-INCLUDES=./imagimob
+INCLUDES=./imagimob ./configs
 
 # Add additional defines to the build process (without a leading -D).
 DEFINES=CY_RETARGET_IO_CONVERT_LF_TO_CRLF CY_RTOS_AWARE \
@@ -195,6 +195,48 @@ PREBUILD=
 
 # Custom post-build commands to run.
 POSTBUILD=
+
+
+
+# Custom configuration of mbedtls library.
+MBEDTLSFLAGS=MBEDTLS_USER_CONFIG_FILE='"mbedtls_user_config.h"'
+
+# Turn off making tests for CJSON
+CJSONFLAGS=ENABLE_CJSON_TEST=Off ENABLE_CJSON_UTILS=Off
+
+# Add additional defines to the build process (without a leading -D).
+DEFINES+=$(MBEDTLSFLAGS) $(CJSONFLAGS) $(IOTCLFLAGS) CYBSP_WIFI_CAPABLE CY_RETARGET_IO_CONVERT_LF_TO_CRLF
+DEFINES+=CY_RTOS_AWARE
+
+# for http client
+DEFINES+=ENABLE_HTTP_CLIENT_LOGS MQTT_DO_NOT_USE_CUSTOM_CONFIG
+DEFINES+=HTTP_DO_NOT_USE_CUSTOM_CONFIG
+# for sntp
+DEFINES+=SNTP_SERVER_DNS
+
+# Define to enable qualification code in the SDK
+# This define should NOT be used in production,
+# as it could make your device vulnerable to MITM attacks
+# DEFINES+=IOTC_AWS_DEVICE_QUALIFICATION
+
+# Configure response header maximum length with the specified value - HTTP
+DEFINES+=HTTP_MAX_RESPONSE_HEADERS_SIZE_BYTES=2048
+
+### MQTT SETTINGS
+# Number of milliseconds to wait for a ping response to a ping
+DEFINES+= MQTT_PINGRESP_TIMEOUT_MS=5000
+# The number of retries for receiving CONNACK
+DEFINES+= MQTT_MAX_CONNACK_RECEIVE_RETRY_COUNT=2
+
+# CY8CPROTO-062-4343W board shares the same GPIO for the user button (USER BTN1)
+# and the CYW4343W host wake up pin. Since this example uses the GPIO for
+# interfacing with the user button, the SDIO interrupt to wake up the host is
+# disabled by setting CY_WIFI_HOST_WAKE_SW_FORCE to '0'.
+#
+# If you wish to enable this host wake up feature, Comment DEFINES+=CY_WIFI_HOST_WAKE_SW_FORCE=0.
+# If you want this feature on CY8CPROTO-062-4343W, change the GPIO pin for USER BTN
+# in design/hardware & Comment DEFINES+=CY_WIFI_HOST_WAKE_SW_FORCE=0.
+DEFINES+=CY_WIFI_HOST_WAKE_SW_FORCE=0
 
 
 ################################################################################

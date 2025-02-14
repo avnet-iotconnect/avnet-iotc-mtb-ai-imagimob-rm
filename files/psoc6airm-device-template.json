@@ -1,0 +1,56 @@
+{
+    "code": "psoc6airm",
+    "name": "psoc6airm",
+    "authType": 2,
+    "attributes": [
+        {
+            "name": "version",
+            "type": "STRING"
+        },
+        {
+            "name": "random",
+            "type": "INTEGER"
+        },
+        {
+            "name": "class",
+            "type": "STRING"
+        }
+    ],
+    "commands": [
+        {
+            "name": "demo-mode",
+            "command": "demo-mode",
+            "requiredParam": true,
+            "requiredAck": true,
+            "isOTACommand": false
+        },
+        {
+            "name": "board-user-led",
+            "command": "board-user-led",
+            "requiredParam": true,
+            "isOTACommand": false,
+            "requiredAck": true
+        },
+        {
+            "name": "set-reporting-interval",
+            "command": "set-reporting-interval",
+            "requiredParam": true,
+            "requiredAck": true,
+            "isOTACommand": false
+        },
+        {
+            "name": "set-linger-interval",
+            "command": "set-linger-interval",
+            "requiredParam": true,
+            "requiredAck": true,
+            "isOTACommand": false
+        }
+    ],
+    "messageVersion": "2.1",
+    "msgCode": "XG44JNX",
+    "greenGrass": "0",
+    "wireless": "0",
+    "_meta": {
+        "version": "2.0"
+    }
+}
