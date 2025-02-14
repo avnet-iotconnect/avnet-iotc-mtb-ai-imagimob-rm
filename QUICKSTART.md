@@ -20,21 +20,13 @@ A new USB device should be detected.
 
 ## 4. Flash the Firmware
 * **Download** and **Install** the latest (tested with v5.2) [ModusToolbox Programming Tools](https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxprogtools) (Right-Click, "Open link in new tab")
-* **Download** and **unzip** the pre-compiled firmware for the desired model:
-
-| Model    | Firmware |
-|----------|----------|
-| Gestures | TBD      |
-| Siren    | TBD      |
-| Baby Cry | TBD      |
-| Alarm    | TBD      |
-| Cough    | TBD      |
-| Snore    | TBD      |  
-* 
+* **Download** and **unzip** the pre-compiled [avnet-iotc-mtb-ai-imagimob-rm-v1.0.0.zip](https://downloads.iotconnect.io/partners/infineon/demos/avnet-iotc-mtb-ai-imagimob-rm-v1.0.0.zip) firmware package.
+The package will contain several .hex files with the board name as the prefix and model type as suffix. 
 * Launch the **ModusToolbox Programmer** software and update the firmware if prompted.
 * Next to the **Programmer** drop-down, ensure the item beginning with **KitProg3** is selected
-* Click the dropdown box next to **Board** and select the **CY8CKIT-062S2-AI** board.
+* Click the dropdown box next to **Board** and select the **CY8CKIT-062S2-AI** or **CY8CKIT-062S2-43012** depending on the board that needs to be programmed.
 * Click **File -> Open** and select the corresponding firmware .hex file downloaded.
+For example, if trying out the *Siren* model using the CY8CKIT-062S2-AI, select the ```062S2-ai-imagimob-rm-siren.hex```.
 * Click **Connect**.
 * Click **Program**.
 * Wait for the "Device programmed successfully" message to appear at the bottom.
@@ -171,35 +163,19 @@ An IoTConnect *Device Template* will need to be created or imported. This define
 * After a few seconds, the device will connect, and begin sending telemetry packets similar to the example below:
 
 ```
->: {"d":[{"d":{"version":"03.01.00","random":79,"baby_cry_detected":false,"confidence_baby_cry":3.5081654914392857e-08}}]}
+Detected snore
+Detected snore
+>: {"d":[{"d":{"version":"N-01.00.00","random":32,"class":"snore"}}]}
+>: {"d":[{"d":{"version":"N-01.00.00","random":61,"class":"not-detected"}}]}
 ```
 
-* Switch back to the IoTConnect GUI in your browser and **Click** "Live Data" on the left Device menu and verify telemetry is being populated
+* Switch back to the IoTConnect GUI in your browser and **Click** "Live Data" on the left Device menu and verify telemetry is being populated.
 
-## 13. Create/Import a Dashboard
-The data can be visualized by using the Dynamic Dashboard feature of IoTConnect.  
-A preconfigured example dashboard is available here: [psoc6airm-example-dashboard.json](files/psoc6airm-example-dashboard.json?raw=1) (**must** Right-Click the link, Save As)
-
-* **Download** the template then select "Create Dashboard" from the top of the IoTConnect portal
-* **Select** the "Import Dashboard" option and **Select** the *Template* and *Device Name* used previously 
-* **Input** a name and complete the import
-
-You will now be in the dashboard edit mode. You can add/remove widgets or just click **Save** in the upper-right to exit the edit mode.
-The dashboard should similar to the one below:  
-<img width="700" alt="baby_cry_dashboard" src="files/baby_cry_dashboard.png">
-
-## 14. Using the Demo
-
-### Exercising the Imagimob Model
-With the evaluation board programed and powered-on, it will be constantly "listening" for the sound of a baby crying. All other sounds will be categorized as "unlabelled".
-The dashboard template come pre-populated with an embedded YouTube video of a baby crying.  Ensure your PC speakers are on and in proximity of the evaluation board and play the video.
-After a second or two, the detection should trigger and also display a confidence factor.
-
-### Demonstrating Cloud-to-Device Communication
-IoTConnect supoorts sending commands from the platform back to the device. Using the "Device Command" widget, a command to toggle an LED ON/OFF from the IoTConnect Dashboard.  
+## 13. Demonstrating Cloud-to-Device Communication
+IoTConnect supports sending commands from the platform back to the device. Using the "Device Command" widget, a command to toggle an LED ON/OFF from the IoTConnect Dashboard.  
 * Select "change-board-led" from the drop-down
 * Enter either "on" or "off" into the *Parameter Value* field
 * **Click** "Execute Command"
 
-## 15. Troubleshooting and Known Issues
+## 14. Troubleshooting and Known Issues
 * The board may not be able to obtain time from the NTP server. Resetting the board should re-try the NTP connection and will likely succeed on the next try.
