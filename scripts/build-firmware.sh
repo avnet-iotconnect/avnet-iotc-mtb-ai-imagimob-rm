@@ -70,7 +70,12 @@ cp ./build/last_config/avnet-iotc-mtb-ai-imagimob-rm.hex "${ARTIFACTS_DIR}"/062S
 make MODEL_SELECTION=SNORE_MODEL build
 cp ./build/last_config/avnet-iotc-mtb-ai-imagimob-rm.hex "${ARTIFACTS_DIR}"/062S2-43012-imagimob-snore.hex
 
-cd "${ARTIFACTS_DIR}"
-rm -f avnet-iotc-mtb-ai-imagimob-rm-firmware.zip
-zip avnet-iotc-mtb-ai-imagimob-rm-firmware.zip -- *.hex
-rm -f -- *.hex
+
+if [ "$GITHUB_ACTIONS" != "true" ]; then
+  echo "GitHub Action Environment not detected. Creating the zip..."
+  cd "${ARTIFACTS_DIR}"
+  rm -f avnet-iotc-mtb-ai-imagimob-rm-firmware.zip
+  zip avnet-iotc-mtb-ai-imagimob-rm-firmware.zip -- *.hex
+  rm -f -- *.hex
+  echo "Done."
+fi
