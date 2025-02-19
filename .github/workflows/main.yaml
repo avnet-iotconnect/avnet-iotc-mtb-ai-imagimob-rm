@@ -24,6 +24,6 @@ jobs:
       - name: Publish Package Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: firmware
+          name: firmware-collection.zip
           path: artifacts/*
 
