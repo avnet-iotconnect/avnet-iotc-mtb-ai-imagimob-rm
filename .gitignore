@@ -8,7 +8,10 @@
 # code into a VCS, you can ignore the .gitignore file.
 
 # Pycharm and other JetBrains IDEs
-.idea/
+/.idea/
+
+# Automated build output
+/artifacts/
 
 # Don't think we should be tracking this file
 /deps/assetlocks.json
