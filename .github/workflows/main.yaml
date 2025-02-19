@@ -22,7 +22,7 @@ jobs:
         run: scripts/build-firmware.sh
 
       - name: Publish Package Artifact
-        uses: ctions/upload-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: avnet-iotc-mtb-ai-imagimob-rm-firmware.zip
           path: artifacts/avnet-iotc-mtb-ai-imagimob-rm-firmware.zip
