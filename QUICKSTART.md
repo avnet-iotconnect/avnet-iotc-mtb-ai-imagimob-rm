@@ -46,23 +46,23 @@ For example, if trying out the *Siren* model using the CY8CKIT-062S2-AI, select 
 * After setup, connect and reset the board.
 
 ## 7. Cloud Account Setup
-An IoTConnect account is required.  If you need to create an account, a free trial subscription is available.
+An /IOTCONNECT account is required.  If you need to create an account, a free trial subscription is available.
 
-Select one of the two implementations of IoTConnect:
+Select one of the two implementations of /IOTCONNECT:
 * [AWS Version](https://subscription.iotconnect.io/subscribe?cloud=aws)  (Recommended)
 * [Azure Version](https://subscription.iotconnect.io/subscribe?cloud=azure)  
 
 > [!NOTE]
 > Be sure to check any SPAM folder for the temporary password after registering.
 
-See the IoTConnect [Subscription Information](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/subscription/subscription.md) for more details on the trial.
+See the /IOTCONNECT [Subscription Information](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/subscription/subscription.md) for more details on the trial.
 
-## 8. Acquire IoTConnect Account Information
-Login to IoTConnect using the corresponding link below to the version for which you registered:  
-* [IoTConnect on AWS](https://console.iotconnect.io) (Recommended)
-* [IoTConnect on Azure](https://portal.iotconnect.io)
+## 8. Acquire /IOTCONNECT Account Information
+Login to /IOTCONNECT using the corresponding link below to the version for which you registered:  
+* [/IOTCONNECT on AWS](https://console.iotconnect.io) (Recommended)
+* [/IOTCONNECT on Azure](https://portal.iotconnect.io)
 
-The Company ID (**CPID**) and Environment (**ENV**) variables identifying your IoTConnect account must be configured for the device.
+The Company ID (**CPID**) and Environment (**ENV**) variables identifying your /IOTCONNECT account must be configured for the device.
 * Take note of these values for later reference located in the "Settings" -> "Key Vault" section of the platform. See image below.
 
 <img src="https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/bbdc9f363831ba607f40805244cbdfd08c887e78/assets/cpid_and_env.png" width=600>
@@ -93,7 +93,7 @@ The application will display the auto-generated certificate from flash upon boot
 > [!CAUTION]  
 > This certificate will be re-generated every time you re-flash the board because the flash section
 > where the certificate and private key are stored will be erased.
-> In this case, you will need to delete your device from IoTConnect and re-create the device with the new certificate.
+> In this case, you will need to delete your device from /IOTCONNECT and re-create the device with the new certificate.
 > If you wish to avoid this, you should use the Developer Guide and 
 > have your device credentials compiled into the application.
 
@@ -126,11 +126,11 @@ Obtaining network time......
 Time received from NTP.
 ```
 
-There will be errors displayed because the device still needs to be created in the IoTConnect platform. Ignore the errors and continue to the next section.
+There will be errors displayed because the device still needs to be created in the /IOTCONNECT platform. Ignore the errors and continue to the next section.
 
-## 10. IoTConnect Device Template Setup
+## 10. /IOTCONNECT Device Template Setup
 
-An IoTConnect *Device Template* will need to be created or imported. This defines the data format the platform should expect from the device.
+An /IOTCONNECT *Device Template* will need to be created or imported. This defines the data format the platform should expect from the device.
 * Download the premade  [Device Template](files/psoc6airm-device-template.json?raw=1) (**must** Right-Click the link, Save As)
 
 * **Click** the Device icon and the "Device" sub-menu:  
@@ -141,7 +141,7 @@ An IoTConnect *Device Template* will need to be created or imported. This define
 * At the top-right of the page, select the "Import" button.<br>![image](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/assets/40640041/418b999c-58e2-49f3-a3f1-118b16271b26)
 * Finally, click the "Browse" button and select the template previously downloaded.
 
-## 11. IoTConnect Device Creation
+## 11. /IOTCONNECT Device Creation
 * **Click** the Device icon and the "Device" sub-menu:  
 <img src="https://github.com/avnet-iotconnect/avnet-iotc-mtb-xensiv-example/assets/40640041/57e0b0c8-08ba-4c3f-b33d-489d7d0db568" width=200>
 
@@ -169,10 +169,10 @@ Detected snore
 >: {"d":[{"d":{"version":"N-01.00.00","random":61,"class":"not-detected"}}]}
 ```
 
-* Switch back to the IoTConnect GUI in your browser and **Click** "Live Data" on the left Device menu and verify telemetry is being populated.
+* Switch back to the /IOTCONNECT GUI in your browser and **Click** "Live Data" on the left Device menu and verify telemetry is being populated.
 
 ## 13. Demonstrating Cloud-to-Device Communication
-IoTConnect supports sending commands from the platform back to the device. Using the "Device Command" widget, a command to toggle an LED ON/OFF from the IoTConnect Dashboard.  
+/IOTCONNECT supports sending commands from the platform back to the device. Using the "Device Command" widget, a command to toggle an LED ON/OFF from the /IOTCONNECT Dashboard.  
 * Select "change-board-led" from the drop-down
 * Enter either "on" or "off" into the *Parameter Value* field
 * **Click** "Execute Command"
