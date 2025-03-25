@@ -8,7 +8,7 @@ This guide has been tested with the following environment:
 * WiFi Network with Internet access
 * A serial terminal application such as [Tera Term](https://sourceforge.net/projects/tera-term/) (Recommended) or a browser-based version such as [Google Chrome Labs Serial Terminal](https://googlechromelabs.github.io/serial-terminal/)
 * A registered [myInfineon Account](https://www.infineon.com/sec/login)
-* PSoC&trade; 6 Artificial Intelligence Evaluation Kit (CY8CKIT-062S2-AI)
+* PSoC&trade; 6 Artificial Intelligence Evaluation Kit (CY8CKIT-062S2-AI) [Buy Now](https://www.avnet.com/shop/us/products/infineon/cy8ckit-062s2-ai-3074457345659496631/)
 * or PSoC&trade; 62S2 Wi-Fi Bluetooth&reg; Pioneer Kit (CY8CKIT-062S2-43012) with SHIELD_XENSIV_A sensor shield.
 
 ## 3. Hardware Setup
