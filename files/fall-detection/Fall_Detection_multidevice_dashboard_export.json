@@ -1,0 +1,505 @@
+{
+    "ddType": 1,
+    "items": [
+        {
+            "widgetGuid": "A8CB394D-15B1-42C9-94FC-AD7BDC599E2A",
+            "widgetProperties": {
+                "i": "Image",
+                "background": "#000000",
+                "fontColor": "#000000",
+                "fontFamily": "Proxima Nova",
+                "fontSize": "10",
+                "title": "title-shady",
+                "titleAlign": "",
+                "contents": {
+                    "option": {
+                        "imageUpload": "false",
+                        "imageUrl": "true",
+                        "imageDevice": "false",
+                        "imageTelemetry": "false",
+                        "key": "option",
+                        "position": "stretch"
+                    },
+                    "upload": {
+                        "imageurl": "",
+                        "key": "upload"
+                    },
+                    "url": {
+                        "imageurl": "https://saleshosted.z13.web.core.windows.net/demo/ifx/deepcraft/resi-title.png",
+                        "key": "url"
+                    },
+                    "device": {
+                        "deviceGuid": "",
+                        "deviceName": "",
+                        "imageurl": "",
+                        "key": "device"
+                    },
+                    "telemetry": {
+                        "deviceGuid": "",
+                        "deviceName": "",
+                        "imageurl": "",
+                        "key": "telemetry"
+                    }
+                }
+            },
+            "properties": {
+                "x": "0",
+                "y": "0",
+                "w": "13",
+                "h": "13",
+                "i": "Image",
+                "minW": "5",
+                "minH": "5",
+                "isStatic": "false"
+            }
+        },
+        {
+            "widgetGuid": "189602F6-0456-4573-9EFA-F6C6B27D7871",
+            "widgetProperties": {
+                "i": "Notifications",
+                "background": "#fff",
+                "fontColor": "#343434",
+                "fontFamily": "Proxima Nova",
+                "fontSize": "18",
+                "title": "Notifications",
+                "titleAlign": "",
+                "contents": {
+                    "numberOfRow": {
+                        "row": "10"
+                    },
+                    "matchedDate": {
+                        "fontColor": "#2e71be",
+                        "fontFamily": "Proxima Nova",
+                        "fontSize": "16",
+                        "title": "Date",
+                        "contentTitle": "Matched Date"
+                    },
+                    "eventName": {
+                        "fontColor": "#2e71be",
+                        "fontFamily": "Proxima Nova",
+                        "fontSize": "16",
+                        "title": "Event Name",
+                        "contentTitle": "Event Name"
+                    },
+                    "matchedCondition": {
+                        "fontColor": "#2e71be",
+                        "fontFamily": "Proxima Nova",
+                        "fontSize": "16",
+                        "title": "Condition",
+                        "contentTitle": "Matched Condition"
+                    },
+                    "uniqueId": {
+                        "fontColor": "#2e71be",
+                        "fontFamily": "Proxima Nova",
+                        "fontSize": "16",
+                        "title": "Resource",
+                        "contentTitle": "Resource"
+                    },
+                    "severity": {
+                        "fontColor": "#2e71be",
+                        "fontFamily": "Proxima Nova",
+                        "fontSize": "16",
+                        "title": "Severity",
+                        "contentTitle": "Severity"
+                    }
+                }
+            },
+            "properties": {
+                "x": "13",
+                "y": "0",
+                "w": "19",
+                "h": "11",
+                "i": "Notifications",
+                "minW": "10",
+                "minH": "5",
+                "maxH": "902",
+                "maxW": "838",
+                "isStatic": "false"
+            }
+        },
+        {
+            "widgetGuid": "6739F6B2-6DBA-4761-8BF4-77F83D7F1A88",
+            "widgetProperties": {
+                "i": "DeviceCounter",
+                "background": "#fff",
+                "fontColor": "#000000",
+                "fontFamily": "Proxima Nova",
+                "fontSize": "18",
+                "title": "Deployed Fall Detection Devices",
+                "titleAlign": "",
+                "contents": {
+                    "devicecounter": {
+                        "boxTypes": "4",
+                        "counterDatas": {
+                            "counterData": [
+                                {
+                                    "guid": "connected",
+                                    "name": "connected"
+                                },
+                                {
+                                    "guid": "disconnected",
+                                    "name": "disconnected"
+                                },
+                                {
+                                    "guid": "released",
+                                    "name": "released"
+                                },
+                                {
+                                    "guid": "total",
+                                    "name": "total"
+                                }
+                            ]
+                        },
+                        "key": "devicecounter"
+                    }
+                }
+            },
+            "properties": {
+                "x": "32",
+                "y": "0",
+                "w": "15",
+                "h": "8",
+                "i": "DeviceCounter",
+                "minW": "5",
+                "minH": "8",
+                "maxH": "8",
+                "isStatic": "false"
+            }
+        },
+        {
+            "widgetGuid": "A8CB394D-15B1-42C9-94FC-AD7BDC599E2A",
+            "widgetProperties": {
+                "i": "Image",
+                "background": "#FFFFFF",
+                "fontColor": "#ffffff",
+                "fontFamily": "Proxima Nova",
+                "fontSize": "10",
+                "title": "ifx header",
+                "titleAlign": "",
+                "contents": {
+                    "option": {
+                        "imageUpload": "false",
+                        "imageUrl": "true",
+                        "imageDevice": "false",
+                        "imageTelemetry": "false",
+                        "key": "option",
+                        "position": "stretch"
+                    },
+                    "upload": {
+                        "imageurl": "",
+                        "key": "upload"
+                    },
+                    "url": {
+                        "imageurl": "https://saleshosted.z13.web.core.windows.net/media/ifx/IFX-EW25/Sidebar%20title.png",
+                        "key": "url"
+                    },
+                    "device": {
+                        "deviceGuid": "",
+                        "deviceName": "",
+                        "imageurl": "",
+                        "key": "device"
+                    },
+                    "telemetry": {
+                        "deviceGuid": "",
+                        "deviceName": "",
+                        "imageurl": "",
+                        "key": "telemetry"
+                    }
+                }
+            },
+            "properties": {
+                "x": "47",
+                "y": "0",
+                "w": "9",
+                "h": "22",
+                "i": "Image",
+                "minW": "5",
+                "minH": "5",
+                "isStatic": "false"
+            }
+        },
+        {
+            "widgetGuid": "315EDD6C-15FB-4CD9-AB4D-D56EB0A171DB",
+            "widgetProperties": {
+                "i": "RegisteredDevices",
+                "background": "#fff",
+                "fontColor": "#343434",
+                "fontFamily": "Proxima Nova",
+                "fontSize": "18",
+                "title": "Latest Registered Devices",
+                "titleAlign": "",
+                "contents": {
+                    "deviceId": {
+                        "fontColor": "#2e71be",
+                        "fontFamily": "Proxima Nova",
+                        "fontSize": "16",
+                        "title": "Device ID",
+                        "contentTitle": "Device Id"
+                    },
+                    "entity": {
+                        "fontColor": "#2e71be",
+                        "fontFamily": "Proxima Nova",
+                        "fontSize": "16",
+                        "title": "Entity",
+                        "contentTitle": "Entity"
+                    },
+                    "dateTime": {
+                        "fontColor": "#2e71be",
+                        "fontFamily": "Proxima Nova",
+                        "fontSize": "16",
+                        "title": "Date & Time",
+                        "contentTitle": "Date & Time"
+                    }
+                }
+            },
+            "properties": {
+                "x": "32",
+                "y": "8",
+                "w": "15",
+                "h": "9",
+                "i": "RegisteredDevices",
+                "minW": "12",
+                "minH": "9",
+                "maxH": "902",
+                "maxW": "1222",
+                "isStatic": "false"
+            }
+        },
+        {
+            "widgetGuid": "CDBC7C0D-03BF-4D14-9924-7C75AE09133E",
+            "widgetProperties": {
+                "i": "LiveMap",
+                "background": "#000000",
+                "fontColor": "#fff",
+                "fontFamily": "Arvo",
+                "fontSize": "18",
+                "title": "Resident Location",
+                "titleAlign": "",
+                "contents": {
+                    "livemap": {
+                        "devicelists": {
+                            "devices": [
+                                {
+                                    "deviceUniqueId": "fd-bill",
+                                    "deviceGuid": "240B277C-A35B-4698-A486-6E8B9D32CA5E",
+                                    "pinColor": "grey",
+                                    "latestPinColor": "green",
+                                    "displayName": "fd-bill"
+                                },
+                                {
+                                    "deviceUniqueId": "fd-mary",
+                                    "deviceGuid": "5F3994A7-1B8A-482F-A10A-3414276DFFBE",
+                                    "pinColor": "grey",
+                                    "latestPinColor": "#f5a623",
+                                    "displayName": "fd-mary"
+                                },
+                                {
+                                    "deviceUniqueId": "fd-paul",
+                                    "deviceGuid": "0261605E-8292-44F6-80D0-16C2E633CBFE",
+                                    "pinColor": "grey",
+                                    "latestPinColor": "#f8e71c",
+                                    "displayName": "fd-paul"
+                                },
+                                {
+                                    "deviceUniqueId": "fd-steven",
+                                    "deviceGuid": "C1244DE4-500C-4715-B1D2-68421E01D422",
+                                    "pinColor": "grey",
+                                    "latestPinColor": "#9013fe",
+                                    "displayName": "fd-steven"
+                                }
+                            ],
+                            "dshows": "1",
+                            "templateGuid": "CBC49722-1C1B-4F6A-8547-E3ABCC0A6130",
+                            "tag": "",
+                            "templateName": "psoc6airm",
+                            "latitude": {
+                                "guid": "5B3D937A-9394-44CD-9EC1-5C2BF6BAE74C",
+                                "attributeName": "gps_loc"
+                            },
+                            "longitude": {
+                                "guid": "5B3D937A-9394-44CD-9EC1-5C2BF6BAE74C",
+                                "attributeName": "gps_loc"
+                            },
+                            "recentEndPoints": "10"
+                        },
+                        "key": "livemap"
+                    }
+                }
+            },
+            "properties": {
+                "x": "13",
+                "y": "11",
+                "w": "19",
+                "h": "10",
+                "i": "LiveMap",
+                "minW": "12",
+                "minH": "10",
+                "isStatic": "false"
+            }
+        },
+        {
+            "widgetGuid": "6FEFF6B7-15C4-4095-A156-87A1B38D2FF5",
+            "widgetProperties": {
+                "i": "Transformation",
+                "background": "#000000",
+                "fontColor": "#000000",
+                "fontFamily": "Proxima Nova",
+                "fontSize": "10",
+                "title": "Transformation",
+                "titleAlign": "",
+                "contents": {
+                    "Transformation": {
+                        "device": {
+                            "deviceGuid": "5F3994A7-1B8A-482F-A10A-3414276DFFBE",
+                            "deviceUniqueId": "fd-mary"
+                        },
+                        "attributes": {
+                            "attribute": [
+                                {
+                                    "attributeGuid": "D9406CA5-ED9B-4723-87EA-3B7CD8DFA537",
+                                    "attributeName": "version",
+                                    "checked": "false",
+                                    "dataType": "STRING",
+                                    "attributeLatestValue": "",
+                                    "deviceUpdatedDate": "1900-01-01T00:00:00.000Z",
+                                    "gatewayUpdatedDate": "NA",
+                                    "attributeValue": "NA"
+                                },
+                                {
+                                    "attributeGuid": "208FBE98-B555-4429-B5A0-2FBE006D03EF",
+                                    "attributeName": "random",
+                                    "checked": "false",
+                                    "dataType": "INTEGER",
+                                    "attributeLatestValue": "60",
+                                    "deviceUpdatedDate": "2025-03-28T21:22:30.130Z",
+                                    "gatewayUpdatedDate": "NA",
+                                    "attributeValue": "60"
+                                },
+                                {
+                                    "attributeGuid": "1831F106-89F0-4745-A25B-32A202692B27",
+                                    "attributeName": "class",
+                                    "checked": "false",
+                                    "dataType": "STRING",
+                                    "attributeLatestValue": "no-detect",
+                                    "deviceUpdatedDate": "2025-03-28T21:22:30.130Z",
+                                    "gatewayUpdatedDate": "NA",
+                                    "attributeValue": "no-detect"
+                                },
+                                {
+                                    "attributeGuid": "8329A117-5909-441E-9961-9B33183A5CBA",
+                                    "attributeName": "fall_detected",
+                                    "checked": "true",
+                                    "dataType": "BOOLEAN",
+                                    "attributeLatestValue": "",
+                                    "deviceUpdatedDate": "1900-01-01T00:00:00.000Z",
+                                    "gatewayUpdatedDate": "NA",
+                                    "attributeValue": "NA"
+                                }
+                            ]
+                        },
+                        "key": "Transformation",
+                        "transformations": [
+                            {
+                                "condition": "eq",
+                                "conditionValue": "true",
+                                "type": "Url",
+                                "errors": "",
+                                "typeValue": "https://saleshosted.z13.web.core.windows.net/demo/ifx/deepcraft/slip.png"
+                            },
+                            {
+                                "condition": "ne",
+                                "conditionValue": "true",
+                                "type": "Url",
+                                "errors": "",
+                                "typeValue": "https://saleshosted.z13.web.core.windows.net/demo/ifx/deepcraft/safe.png"
+                            }
+                        ],
+                        "position": "center"
+                    }
+                }
+            },
+            "properties": {
+                "x": "0",
+                "y": "13",
+                "w": "13",
+                "h": "8",
+                "i": "Transformation",
+                "minW": "7",
+                "minH": "4",
+                "isStatic": "false"
+            }
+        },
+        {
+            "widgetGuid": "44E78BF0-8172-4BD8-ABA2-9D2730D93299",
+            "widgetProperties": {
+                "i": "RuleCounts",
+                "background": "#7ca2af",
+                "fontColor": "#fff",
+                "fontFamily": "Proxima Nova",
+                "fontSize": "18",
+                "title": "Active Notifications",
+                "titleAlign": "",
+                "contents": {
+                    "rules": {
+                        "fontColor": "#fff",
+                        "fontFamily": "Proxima Nova",
+                        "fontSize": "24",
+                        "title": "Rules",
+                        "contentTitle": "Rules",
+                        "key": "rules"
+                    },
+                    "count": {
+                        "fontColor": "#fff",
+                        "fontFamily": "Proxima Nova",
+                        "fontSize": "20",
+                        "contentTitle": "Rule Count",
+                        "key": "count"
+                    }
+                }
+            },
+            "properties": {
+                "x": "32",
+                "y": "17",
+                "w": "6",
+                "h": "4",
+                "i": "RuleCounts",
+                "minW": "6",
+                "minH": "4",
+                "maxH": "248",
+                "maxW": "440",
+                "isStatic": "false"
+            }
+        },
+        {
+            "widgetGuid": "5AA3E988-15DE-4110-BBD8-0BE20086EE35",
+            "widgetProperties": {
+                "i": "lastrefreshed",
+                "background": "#FFFFFF",
+                "fontColor": "#343434",
+                "fontFamily": "Proxima Nova",
+                "fontSize": "18",
+                "title": "Last Refreshed",
+                "titleAlign": "",
+                "contents": {
+                    "lastrefreshed": {
+                        "timezone": "UTC",
+                        "dateTimeColor": "#000000",
+                        "lastRefreshedDateTime": 1743197374
+                    }
+                }
+            },
+            "properties": {
+                "x": "38",
+                "y": "17",
+                "w": "9",
+                "h": "4",
+                "i": "lastrefreshed",
+                "minW": "9",
+                "minH": "4",
+                "maxH": "4",
+                "maxW": "9",
+                "isStatic": "false"
+            }
+        }
+    ]
+}
