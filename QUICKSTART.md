@@ -2,21 +2,19 @@
 This document outlines the steps of setting up the Infineon PSoC™ 6 Imagimob Ready Model project on the supported boards.
 
 ## 2. Prerequisites
-This guide has been tested with the following environment:
+This guide has been tested with the following:
 * PC with Windows 10/11
 * USB-A to USB-C data cable
 * WiFi Network with Internet access
 * A serial terminal application such as [Tera Term](https://sourceforge.net/projects/tera-term/) (Recommended) or a browser-based version such as [Google Chrome Labs Serial Terminal](https://googlechromelabs.github.io/serial-terminal/)
 * A registered [myInfineon Account](https://www.infineon.com/sec/login)
-* PSoC&trade; 6 Artificial Intelligence Evaluation Kit (CY8CKIT-062S2-AI) [Buy Now](https://www.avnet.com/shop/us/products/infineon/cy8ckit-062s2-ai-3074457345659496631/)
-* or PSoC&trade; 62S2 Wi-Fi Bluetooth&reg; Pioneer Kit (CY8CKIT-062S2-43012) with SHIELD_XENSIV_A sensor shield.
+* One of the following hardware setups:
+1) PSoC&trade; 6 Artificial Intelligence Evaluation Kit (CY8CKIT-062S2-AI) [Buy Now](https://www.avnet.com/shop/us/products/infineon/cy8ckit-062s2-ai-3074457345659496631/)
+2) PSoC&trade; 62S2 Wi-Fi Bluetooth&reg; Pioneer Kit (CY8CKIT-062S2-43012) [Buy Now](https://www.avnet.com/shop/us/products/infineon/cy8ckit-062s2-43012-3074457345644457809) AND [SHIELD_XENSIV_A](https://www.infineon.com/cms/en/product/evaluation-boards/shield_xensiv_a/) sensor shield
 
 ## 3. Hardware Setup
-* If using the Pioneer Kit, connect the SHIELD_XENSIV_A board to the arduino connector.
-* Connect the  board to a USB port your PC.
-Use the right-side USB-C connector on 062S2-AI and the USB connector on the shorter edge of the 062S2-43012.
-A new USB device should be detected. 
- 
+* **PSoC 6 AI Kit:** Connect your PC to the **J1** USB header on the board. A new USB device should be detected.
+* **Pioneer Kit:** Connect the SHIELD_XENSIV_A board to the arduino connector. Use the right-side USB-C connector on 062S2-AI and the USB connector on the shorter edge of the 062S2-43012.
 
 ## 4. Flash the Firmware
 * **Download** and **Install** the latest (tested with v5.2) [ModusToolbox Programming Tools](https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxprogtools) (Right-Click, "Open link in new tab")
@@ -146,7 +144,6 @@ An /IOTCONNECT *Device Template* will need to be created or imported. This defin
 
 * At the top-right, click on the "Create Device" button:  
 <img src="https://github.com/avnet-iotconnect/avnet-iotc-mtb-xensiv-example/assets/40640041/82e70cb6-018b-4bf3-a92c-a7286b05d73f" width=200>
-
 
 * Enter the **DUID** saved from earlier in the *Unique ID* field
 * Enter a description of your choice in the *Display Name* to help identify your device
