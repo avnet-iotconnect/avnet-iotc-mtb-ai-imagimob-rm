@@ -1,7 +1,7 @@
 ## Introduction
 
 This demo project is the integration of Infineon's [Imagimob-ready model deployment for PSoC&trade; 6](https://github.com/Infineon/mtb-example-ml-imagimob-deploy-ready-model/tree/release-v1.0.0)
-and Avnet's [IoTConnect ModusToolbox&trade; Basic Sample](https://github.com/avnet-iotconnect/avnet-iotc-mtb-basic-example/tree/release-v7.0.2). 
+and Avnet's [/IOTCONNECT ModusToolbox&trade; Basic Sample](https://github.com/avnet-iotconnect/avnet-iotc-mtb-basic-example/tree/release-v7.0.2). 
 It demonstrates the ModusToolbox&trade; Machine Learning (MTBML) with Imagimob ready models 
 using sensor data to evaluate the following:
 
@@ -43,10 +43,10 @@ The code has been developed and tested with MTB 3.3, with VsCode, and the board 
 
 ## Building the Project
 
-[Watch an overview video](https://saleshosted.z13.web.core.windows.net/media/ifx/videos/IFX%20Modus%20with%20IoTConnect.mp4) of creating a new project with IoTConnect in ModusToolbox&trade; then follow the steps below.
+[Watch an overview video](https://saleshosted.z13.web.core.windows.net/media/ifx/videos/IFX%20Modus%20with%20IoTConnect.mp4) of creating a new project with /IOTCONNECT in ModusToolbox&trade; then follow the steps below.
 
 To build the project, please refer to the 
-[IoTConnect ModusToolbox&trade; Basic Sample Developer Guide](https://github.com/avnet-iotconnect/avnet-iotc-mtb-basic-example/tree/release-v7.0.1/DEVELOPER_GUIDE.md) 
+[/IOTCONNECT ModusToolbox&trade; Basic Sample Developer Guide](https://github.com/avnet-iotconnect/avnet-iotc-mtb-basic-example/tree/release-v7.0.1/DEVELOPER_GUIDE.md) 
 and note the following:
 - Once ModusToolbox has been installed, the [ModusToolbox&trade; for Machine Learning](https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxpackmachinelearning) software should be installed as well.
 - Modify the [Makefile](Makefile#L166) ```MODEL_SELECTION``` variable to use the desired model.
@@ -57,7 +57,7 @@ and note the following:
 
 ## Running the Demo
 
-For audio models, once the board connects to IoTConnect, it will start processing microphone input and attempt to detect the corresponding sound. 
+For audio models, once the board connects to /IOTCONNECT, it will start processing microphone input and attempt to detect the corresponding sound. 
 This can be tested by placing the board in such way so that the microphone close to the PC speaker.
 For best results, the microphone should be placed very close and pointed directly towards the speaker.
 
@@ -84,15 +84,15 @@ for some time even when no detection occurs. This application behavior can be co
 One can also supply a shorter interval (eg. 500 ms) as a parameter to the **set-reporting-interval** command 
 at runtime to increase the reporting interval. this is especially useful for gesture detections.
 
-The following commands can be sent to the device using the IoTConnect Web UI:
+The following commands can be sent to the device using the /IOTCONNECT Web UI:
 
 | Command                  | Argument Type     | Description                                                                                                                                                                 |
 |:-------------------------|-------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `board-user-led`         | String (on/off)   | Turn the board LED on or off                                                                                                                                                |
 | `set-reporting-interval` | Number (eg. 4000) | Set telemetry reporting interval in milliseconds.  By default, the application will report gestures every 1000ms and Audio every 2500ms                                     |
 | `set-linger-interval`    | Number (eg. 4000) | Set linger interval in milliseconds. By default, the gestures will linger for 5 seconds and audio detection will not linger. Set to 1 if you wish to disable this behavior. |
-| `demo-mode`              | String (on/off)   | Enable demo mode. In this mode the application will send telemetry to IoTConnect for a longer period                                                                        |
+| `demo-mode`              | String (on/off)   | Enable demo mode. In this mode the application will send telemetry to /IOTCONNECT for a longer period                                                                        |
 
 
-## Other IoTConnect-enabled Infineon Kits
+## Other /IOTCONNECT-enabled Infineon Kits
 See the list [here](https://avnet-iotconnect.github.io/#infineon-technologies)
