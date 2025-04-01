@@ -1,12 +1,12 @@
-# Avnet IoTConnect Imagimob Deepcraft AI Use-Case Examples
+# Avnet /IOTCONNECT Imagimob Deepcraft AI Use-Case Examples
 
-This directory contains example dashboards and supporting files for three distinct AI demonstrations using Imagimob Edge AI integrated with Avnet IoTConnect. Each subdirectory includes the specific dashboard JSON file for import into IoTConnect, images illustrating the respective dashboards, and detailed instructions for using each example.
+This directory contains example dashboards and supporting files for three distinct AI demonstrations using Imagimob Edge AI integrated with Avnet /IOTCONNECT. Each subdirectory includes the specific dashboard JSON file for import into /IOTCONNECT, images illustrating the respective dashboards, and detailed instructions for using each example.
 
 ## Getting Started
 Before using these example dashboards, you must:
 
 1. Complete the onboarding process outlined in the [Quickstart Guide](https://github.com/avnet-iotconnect/avnet-iotc-mtb-ai-imagimob-rm/blob/main/QUICKSTART.md).
-2. Import the relevant dashboard (`dashboard.json`) into your IoTConnect environment from the respective example folder.
+2. Import the relevant dashboard (`dashboard.json`) into your /IOTCONNECT environment from the respective example folder.
 3. Follow any additional setup or operational instructions provided in each subdirectory's `README.md`.
 
 Ensure all prerequisites from the Quickstart Guide are met before proceeding with dashboard imports.
