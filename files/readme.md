@@ -23,7 +23,7 @@ This directory contains example dashboards and supporting files for three distin
 - **Dashboard File**: `gesture-detection/dashboard.json`
 - **Usage Instructions**: See the `README.md` within the `gesture-detection` directory for complete instructions.
 
-![Gesture Detection Dashboard](./gesture-detection/gesture_detection_dashboard.png)
+![Gesture Detection Dashboard](./gesture-detection/retail_gesture_dashboard_export.json)
 
 ## Getting Started
 Before using these example dashboards, you must:
