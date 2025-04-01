@@ -1,7 +1,18 @@
 # Fall Detection with DEEPCRAFT™ and IoTConnect (IMU)
 
-## Scenario
+## Background
 An assisted living facility operates a centralized control center equipped with IoTConnect, monitoring multiple fall detection devices worn by residents. Each device uses Imagimob's DEEPCRAFT™ Edge AI model to accurately detect falls in real-time. When a fall is detected, the device immediately transmits the incident to the IoTConnect platform. The centralized dashboard then triggers alerts and notifications to caregivers instantly, allowing prompt response and assistance. The facility management team can oversee all incidents, manage devices remotely, and continuously optimize fall detection performance through easy retraining and rule adjustments, ensuring maximum safety for residents.
+
+![Fall Detection Dashboard](../fall-detection/fall_detection_dashboard.png)
+
+## Getting Started
+
+1. Ensure your device is onboarded by following the [Quickstart Guide](https://github.com/avnet-iotconnect/avnet-iotc-mtb-ai-imagimob-rm/blob/main/QUICKSTART.md).
+2. Import the Fall Detection dashboard (`dashboard.json`) from this folder into your IoTConnect environment.
+3. Configure and activate IoTConnect device rules as described above.
+4. Perform AI Evaluation Kit Testing following the instructions provided to ensure accuracy and optimal performance.
+
+For additional details or troubleshooting, refer to the main [Avnet IoTConnect Imagimob AI Examples README](../README.md).
 
 ## IoTConnect Features
 - **Real-time Alerting**: Instant notifications to caregivers when a fall is detected.
@@ -28,12 +39,5 @@ Use IoTConnect rules to manage notifications and responses:
 - **Rules List**: Configure rules to handle specific incidents, such as "Fall Detected" or "Device Disconnected."
 - **Notification Setup**: Customize notifications via email, push notifications, webhook, or UI alerts based on triggered events.
 
-## Getting Started
 
-1. Ensure your device is onboarded by following the [Quickstart Guide](https://github.com/avnet-iotconnect/avnet-iotc-mtb-ai-imagimob-rm/blob/main/QUICKSTART.md).
-2. Import the Fall Detection dashboard (`dashboard.json`) from this folder into your IoTConnect environment.
-3. Configure and activate IoTConnect device rules as described above.
-4. Perform AI Evaluation Kit Testing following the instructions provided to ensure accuracy and optimal performance.
-
-For additional details or troubleshooting, refer to the main [Avnet IoTConnect Imagimob AI Examples README](../README.md).
 
