@@ -177,4 +177,7 @@ Detected snore
 <img src="files/mtb_ready_model_dashboard.png" width="1000">
 
 ## 14. Demonstrating Cloud-to-Device Communication
-/IOTCONNECT supports sending commands from the platform back to the device. Using the "Device Command" widget, a command to toggle an LED ON/OFF from the /IOTCONNECT Dashboard.  
+/IOTCONNECT supports sending commands from the platform back to the device. Using the "Device Command" widget, a command to toggle an LED ON/OFF from the /IOTCONNECT Dashboard.
+
+## 15. Application Examples / Use-cases
+See see some examples of how these models can be used with /IOTCONNECT to solve real-world solutions, explore the application examples in the [files](files/) directory.
