@@ -35,7 +35,7 @@ This model is ideal for alerting workers who might be wearing headphones or prot
 - **Event Logging**: Comprehensive tracking of device statuses, alarm events, and activities.
 - **Cloud-Based Rules**: Automated response triggers upon alarm detection for effective incident management.
 
-## From Sound to Action: Infineon XENSIV MEMS Microphone
+## From Sound to Action: Infineon MEMS Microphone
 The DEEPCRAFT™ acoustic model utilizes Infineon's IM69D130 MEMS Microphone, providing:
 - High sensitivity and low self-noise
 - Exceptional far-field and directional performance
@@ -50,7 +50,7 @@ Set up /IOTCONNECT device rules to automate actions and notifications:
 
 ## Getting Started
 
-1. Follow the onboarding steps outlined in the [Quickstart Guide](https://github.com/avnet-iotconnect/avnet-iotc-mtb-ai-imagimob-rm/blob/main/QUICKSTART.md) to ensure your device is properly set up.
+1. Follow the onboarding steps outlined in the [QuickStart Guide](https://github.com/avnet-iotconnect/avnet-iotc-mtb-ai-imagimob-rm/blob/main/QUICKSTART.md) to ensure your device is properly set up.
 2. Import the Factory Alarm dashboard (`dashboard.json`) from this folder into your /IOTCONNECT environment.
 3. Configure /IOTCONNECT device rules to automate notifications and control device responses.
 4. Validate and test your setup using Infineon's IM69D130 MEMS microphone to ensure accurate detection and response to alarms.
