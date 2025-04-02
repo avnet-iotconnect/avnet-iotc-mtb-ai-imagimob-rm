@@ -8,7 +8,7 @@ The control center receives instant updates through /IOTCONNECT transformation w
 ## Getting Started
 
 1. Follow the onboarding steps outlined in the [Quickstart Guide](https://github.com/avnet-iotconnect/avnet-iotc-mtb-ai-imagimob-rm/blob/main/QUICKSTART.md) to ensure your device is properly set up.
-2. Import the Factory Alarm dashboard (`dashboard.json`) from this folder into your /IOTCONNECT environment.
+2. Import the Factory Alarm dashboard (`factory_alarm_dashboard.json`) from this folder into your /IOTCONNECT environment.
 3. Configure /IOTCONNECT device rules to automate notifications and control device responses.
 4. Validate and test your setup using Infineon's IM69D130 MEMS microphone to ensure accurate detection and response to alarms.
 
