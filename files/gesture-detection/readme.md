@@ -9,7 +9,7 @@ The gesture technology operates as a standalone IoT device, flexibly placed thro
 
 ## Getting Started
 1. Follow the onboarding steps outlined in the [Quickstart Guide](https://github.com/avnet-iotconnect/avnet-iotc-mtb-ai-imagimob-rm/blob/main/QUICKSTART.md) to ensure device setup.
-2. Import the Gesture Detection dashboard (`dashboard.json`) from this folder into your /IOTCONNECT environment.
+2. Import the Gesture Detection dashboard (`retail_gesture_dashboard.json`) from this folder into your /IOTCONNECT environment.
 3. Set up /IOTCONNECT device rules to automate notifications and manage gestures effectively.
 4. Refer to the [AWS Webhook Setup](https://github.com/avnet-iotconnect/avnet-iotc-mtb-ai-imagimob-rm/blob/main/files/gesture-detection/gesture-controlled_viewer_setup.md) document to enable webhook interactions.
 5. Validate gesture detection performance using Infineon’s BGT60TR13C radar sensor.
