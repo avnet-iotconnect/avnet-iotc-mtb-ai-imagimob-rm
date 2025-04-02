@@ -21,7 +21,6 @@ using sensor data to evaluate the following:
 While the gesture model detection is built into a single model, audio detection requires a corresponding model to be built,
 hence only one sound can be detected at a time, depending on the compile-time setting.
 
-This project currently supports the [CY8CKIT-062S2-AI](https://www.infineon.com/cms/en/product/evaluation-boards/cy8ckit-062s2-ai/)
 The project supports Eclipse and VSCode with GCC_ARM compiler.
 
 ## QuickStart Guide
