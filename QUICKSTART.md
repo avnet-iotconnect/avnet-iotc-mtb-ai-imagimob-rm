@@ -174,7 +174,7 @@ Detected snore
 * **Select** `psoc6airm` for **template** and `<your DUID>` for **device** 
 * **Enter** a name (such as `PSoC6 AI Kit Demo`) and click `Save` to complete the import
 
-
+<img src="files/mtb_ready_model_dashboard.png" width="1000">
 
 ## 14. Demonstrating Cloud-to-Device Communication
 /IOTCONNECT supports sending commands from the platform back to the device. Using the "Device Command" widget, a command to toggle an LED ON/OFF from the /IOTCONNECT Dashboard.  
