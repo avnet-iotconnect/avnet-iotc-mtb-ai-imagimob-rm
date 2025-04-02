@@ -167,11 +167,14 @@ Detected snore
 
 * Switch back to the /IOTCONNECT GUI in your browser and **Click** "Live Data" on the left Device menu and verify telemetry is being populated.
 
-## 13. Demonstrating Cloud-to-Device Communication
-/IOTCONNECT supports sending commands from the platform back to the device. Using the "Device Command" widget, a command to toggle an LED ON/OFF from the /IOTCONNECT Dashboard.  
-* Select "change-board-led" from the drop-down
-* Enter either "on" or "off" into the *Parameter Value* field
-* **Click** "Execute Command"
+## 13. Import the Dashboard
+* Download the demo [Dashboard Template](\files\ReadyModel_MTB_Project_dashboard_export.json?raw=1) (**must** Right-Click, Save As)
+* **Download** the template then select `Create Dashboard` from the top of the page
+* **Select** the `Import Dashboard` option and click `browse` to select the template you just downloaded.
+* **Select** `psoc6airm` for **template** and `<your DUID>` for **device** 
+* **Enter** a name (such as `PSoC6 AI Kit Demo`) and click `Save` to complete the import
 
-## 14. Troubleshooting and Known Issues
-* The board may not be able to obtain time from the NTP server. Resetting the board should re-try the NTP connection and will likely succeed on the next try.
+
+
+## 14. Demonstrating Cloud-to-Device Communication
+/IOTCONNECT supports sending commands from the platform back to the device. Using the "Device Command" widget, a command to toggle an LED ON/OFF from the /IOTCONNECT Dashboard.  
