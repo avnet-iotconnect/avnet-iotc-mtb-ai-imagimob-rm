@@ -7,29 +7,8 @@ This solution leverages /IOTCONNECT to send recognized gestures to AWS through w
 
 ## AWS Services Block Diagram
 
-```
-+------------+          Webhook          +-----------------+
-| /IOTCONNECT | ----------------------->  | AWS API Gateway |
-+------------+                           +-----------------+
-                                                   |
-                                                   v
-                                           +----------------+
-                                           | AWS Lambda     |
-                                           +----------------+
-                                                   |
-                                                   v
-                                           +----------------+
-                                           | Amazon DynamoDB|
-                                           +----------------+
-                                                   ^
-                                                   |
-+-------------------+     Polling via API Gateway |
-| Webpage Hosted    | <----------------------------+
-| on Amazon S3      |
-| (Google StreetView|
-| with JavaScript)  |
-+-------------------+
-```
+![image](aws_flow_diagram.png)
+
 
 ## AWS Setup Steps
 
