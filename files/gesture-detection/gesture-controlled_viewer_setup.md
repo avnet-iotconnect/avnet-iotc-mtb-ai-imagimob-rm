@@ -1,6 +1,6 @@
 # /IOTCONNECT Gesture-Controlled Street View Demo Setup
 
-This guide provides a detailed step-by-step overview to set up an AWS-based infrastructure that enables an Imagimob gesture model connected via /IOTCONNECT to remotely control a Google Street View-based website.
+This guide provides a detailed step-by-step overview to set up AWS-based infrastructure that enables an Imagimob gesture model connected via /IOTCONNECT to remotely control a Google Street View-based website.
 
 ## Overview
 This solution leverages /IOTCONNECT to send recognized gestures to AWS through webhooks, storing gesture data and locations in DynamoDB. A webpage hosted in AWS S3 polls the gesture data from DynamoDB via AWS API Gateway and Lambda, dynamically updating the Google Street View based on received gestures.
