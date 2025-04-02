@@ -1,15 +1,15 @@
-# IoTConnect Gesture-Controlled Street View Demo Setup
+# /IOTCONNECT Gesture-Controlled Street View Demo Setup
 
-This guide provides a detailed step-by-step overview to set up an AWS-based infrastructure that enables an Imagimob gesture model connected via IoTConnect to remotely control a Google Street View-based website.
+This guide provides a detailed step-by-step overview to set up an AWS-based infrastructure that enables an Imagimob gesture model connected via /IOTCONNECT to remotely control a Google Street View-based website.
 
 ## Overview
-This solution leverages IoTConnect to send recognized gestures to AWS through webhooks, storing gesture data and locations in DynamoDB. A webpage hosted in AWS S3 polls the gesture data from DynamoDB via AWS API Gateway and Lambda, dynamically updating the Google Street View based on received gestures.
+This solution leverages /IOTCONNECT to send recognized gestures to AWS through webhooks, storing gesture data and locations in DynamoDB. A webpage hosted in AWS S3 polls the gesture data from DynamoDB via AWS API Gateway and Lambda, dynamically updating the Google Street View based on received gestures.
 
 ## AWS Services Block Diagram
 
 ```
 +------------+          Webhook          +-----------------+
-| IoTConnect | ----------------------->  | AWS API Gateway |
+| /IOTCONNECT | ----------------------->  | AWS API Gateway |
 +------------+                           +-----------------+
                                                    |
                                                    v
@@ -156,7 +156,7 @@ def lambda_handler(event, context):
 
 - Update bucket policy to allow public read.
 
-## IoTConnect Webhook Setup
+## /IOTCONNECT Webhook Setup
 
 - Webhook URL: Your AWS API Gateway URL (`https://{api_id}.execute-api.region.amazonaws.com/prod/setgesture`).
 - Custom Headers Example:
@@ -167,9 +167,9 @@ def lambda_handler(event, context):
 |latitude|33.0020|
 |longitude|-96.7670|
 
-Create multiple webhook rules in IoTConnect with appropriate gestures and locations as needed.
+Create multiple webhook rules in /IOTCONNECT with appropriate gestures and locations as needed.
 
 ## Testing the Setup
 
-Trigger gestures via IoTConnect, and your S3-hosted webpage will respond dynamically, demonstrating a fully integrated IoT and cloud-powered gesture-controlled virtual experience.
+Trigger gestures via /IOTCONNECT, and your S3-hosted webpage will respond dynamically, demonstrating a fully integrated IoT and cloud-powered gesture-controlled virtual experience.
 
