@@ -8,7 +8,7 @@ An assisted living facility operates a centralized control center equipped with 
 ## Getting Started
 
 1. Ensure your device is onboarded by following the [Quickstart Guide](https://github.com/avnet-iotconnect/avnet-iotc-mtb-ai-imagimob-rm/blob/main/QUICKSTART.md).
-2. Import the Fall Detection dashboard (`dashboard.json`) from this folder into your /IOTCONNECT environment.
+2. Import the Fall Detection dashboard (`fall_detection_dashboard.json`) from this folder into your /IOTCONNECT environment.
 3. Configure and activate /IOTCONNECT device rules as described above.
 4. Perform AI Evaluation Kit Testing following the instructions provided to ensure accuracy and optimal performance.
 
