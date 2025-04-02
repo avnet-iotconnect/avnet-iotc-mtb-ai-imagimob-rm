@@ -42,6 +42,52 @@ For additional information or troubleshooting, refer to the main [Avnet /IOTCONN
 To configure AWS infrastructure for handling /IOTCONNECT webhook notifications, refer to the [Gesture-Controlled Viewer AWS Setup Instructions](https://github.com/avnet-iotconnect/avnet-iotc-mtb-ai-imagimob-rm/blob/main/files/gesture-detection/gesture-controlled_viewer_setup.md).
 
 ## /IOTCONNECT Device Rules
-Set /IOTCONNECT rules to automate gesture-triggered actions and notifications:
-- **Webhook Notifications**: Configure webhooks to trigger AWS Lambda via Amazon API Gateway.
-- **Data Management**: Utilize Amazon DynamoDB to store gesture data, polled via API Gateway for real-time webpage updates on Amazon S3.
+To effectively manage gestures in your Smart Retail environment, follow these steps to create device rules in /IOTCONNECT:
+
+### Step-by-Step Instructions
+
+1. **Navigate to the Device List**:
+   - Log in to your /IOTCONNECT account.
+   - Go to **Devices** → **Device List**.
+
+2. **Create a Rule**:
+   - Scroll to the bottom of the device list page and select **Rules**.
+   - Click on **Create Rule**.
+
+3. **Configure Rule Details**:
+   - Enter the **Rule Name** (e.g., SwipeDown Notification).
+   - Select your applicable **Template**.
+   - Choose **Severity** based on your notification preferences.
+   - Under **Attribute**, select **class**.
+   - Set condition to **is equal to**.
+   - Enter the corresponding gesture value from the table below:
+
+    | Gesture Name | Attribute (`class`) Value |
+    |--------------|----------------------------|
+    | Swipe Down   | SwipeDown                  |
+    | Swipe Up     | SwipeUp                    |
+    | Swipe Left   | SwipeLeft                  |
+    | Swipe Right  | SwipeRight                 |
+    | Push         | Push                       |
+
+4. **Select Device, Entity, or Device Group**:
+   - Choose the device(s), entity, or device group the rule will apply to.
+
+5. **Set up Webhook Notifications**:
+   - Under the **Notifications** section, select **Webhook**.
+   - Insert your webhook URL (e.g., `https://05eimjdvv0.execute-api.us-east-1.amazonaws.com/prod/setgesture`).
+   - Note: Replace the example URL with your own, as the provided URL may be taken down in the future.
+
+6. **Add Header Information**:
+   - Enter the **Header Key** and **Header Value** as required by your webhook endpoint.
+   - Example provided below:
+
+    | Header Key | Header Value |
+    |------------|--------------|
+    | gesture    | down         |
+    | gesture    | up           |
+    | gesture    | left         |
+    | gesture    | right        |
+    | gesture    | push         |
+
+Repeat this process to create rules for each gesture, ensuring each gesture is correctly configured based on the table provided above.
