@@ -91,3 +91,8 @@ To effectively manage gestures in your Smart Retail environment, follow these st
     | gesture    | push         |
 
 Repeat this process to create rules for each gesture, ensuring each gesture is correctly configured based on the table provided above.
+
+Board Orientation:
+
+
+![image](CY8CKIT-062S2-AI_orientation.jpg)
