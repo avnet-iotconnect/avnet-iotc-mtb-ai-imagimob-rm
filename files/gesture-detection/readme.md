@@ -28,6 +28,26 @@ For additional information or troubleshooting, refer to the main [Avnet /IOTCONN
 - **Inference Time**: 8 ms, every 91 ms.
 - **Sensor Data Inputs**: Processes radar data—range, velocity, azimuth, elevation, and magnitude at 33 Hz.
 
+## Instructions for Providing Gestures
+To ensure optimal gesture detection, perform the gestures as follows:
+- **Swipe Left**: Open palm moving horizontally parallel to the ground from right to left in front of the radar sensor.
+  ![Gesture left](https://saleshosted.z13.web.core.windows.net/demo/ifx/deepcraft/Swipe-left.gif)
+- **Swipe Right**: Open palm moving horizontally parallel to the ground from left to right in front of the radar sensor.
+  ![Gesture right](https://saleshosted.z13.web.core.windows.net/demo/ifx/deepcraft/Swipe-right.gif)
+- **Swipe Up**: Open palm moving vertically from bottom to top in front of the radar sensor.
+  ![Gesture up](https://saleshosted.z13.web.core.windows.net/demo/ifx/deepcraft/Swipe-up.gif)
+- **Swipe Down**: Open palm moving vertically from top to bottom in front of the radar sensor.
+  ![Gesture down](https://saleshosted.z13.web.core.windows.net/demo/ifx/deepcraft/Swipe-down.gif)
+- **Push**: Open palm moving horizontally parallel to the ground from the user’s body towards the radar sensor.
+  ![Gesture push](https://saleshosted.z13.web.core.windows.net/demo/ifx/deepcraft/push.gif)
+  
+### Performance Tips
+- Gestures should last between 1 and 2 seconds.
+- Perform gestures within 10 to 70 cm from the radar sensor.
+- Ensure gestures are within a 10-degree angle from the radar sensor’s field of view.
+- Avoid obstacles between the hand and radar sensor.
+- Do not hold objects or wear loose clothing or accessories on your hand during gestures.
+
 ## Possible Use Cases
 - Contactless control of computer monitors, household appliances, and other electronic devices.
 - Sleek, button-free user interface designs.
