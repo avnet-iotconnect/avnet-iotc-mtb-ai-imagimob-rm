@@ -29,11 +29,11 @@
                         "key": "url"
                     },
                     "device": {
-                        "deviceGuid": "97968942-58B8-4F44-8A28-EB682D6D0B18",
+                        "deviceGuid": "E59217D5-AE22-4856-B000-0C0A30B1503E",
                         "deviceName": "",
                         "imageurl": "",
                         "key": "device",
-                        "deviceUniqueId": "psoc6-irm-f5af3507"
+                        "deviceUniqueId": "psoc6-irm-f5af1921"
                     },
                     "telemetry": {
                         "deviceGuid": "",
@@ -67,8 +67,8 @@
                 "contents": {
                     "Transformation": {
                         "device": {
-                            "deviceGuid": "97968942-58B8-4F44-8A28-EB682D6D0B18",
-                            "deviceUniqueId": "psoc6-irm-f5af3507"
+                            "deviceGuid": "E59217D5-AE22-4856-B000-0C0A30B1503E",
+                            "deviceUniqueId": "psoc6-irm-f5af1921"
                         },
                         "attributes": {
                             "attribute": [
@@ -77,20 +77,20 @@
                                     "attributeName": "version",
                                     "checked": "false",
                                     "dataType": "STRING",
-                                    "attributeLatestValue": "A-01.00.00",
-                                    "deviceUpdatedDate": "2025-03-28T18:52:47.230Z",
+                                    "attributeLatestValue": "S-01.00.00",
+                                    "deviceUpdatedDate": "2025-04-03T20:42:23.867Z",
                                     "gatewayUpdatedDate": "NA",
-                                    "attributeValue": "A-01.00.00"
+                                    "attributeValue": "S-01.00.00"
                                 },
                                 {
                                     "attributeGuid": "208FBE98-B555-4429-B5A0-2FBE006D03EF",
                                     "attributeName": "random",
                                     "checked": "false",
                                     "dataType": "INTEGER",
-                                    "attributeLatestValue": "61",
-                                    "deviceUpdatedDate": "2025-03-28T18:52:47.230Z",
+                                    "attributeLatestValue": "74",
+                                    "deviceUpdatedDate": "2025-04-03T20:42:23.867Z",
                                     "gatewayUpdatedDate": "NA",
-                                    "attributeValue": "61"
+                                    "attributeValue": "74"
                                 },
                                 {
                                     "attributeGuid": "1831F106-89F0-4745-A25B-32A202692B27",
@@ -98,7 +98,7 @@
                                     "checked": "true",
                                     "dataType": "STRING",
                                     "attributeLatestValue": "not-detected",
-                                    "deviceUpdatedDate": "2025-03-28T18:52:47.230Z",
+                                    "deviceUpdatedDate": "2025-04-03T20:42:23.867Z",
                                     "gatewayUpdatedDate": "NA",
                                     "attributeValue": "not-detected"
                                 },
@@ -237,11 +237,11 @@
                         "key": "url"
                     },
                     "device": {
-                        "deviceGuid": "97968942-58B8-4F44-8A28-EB682D6D0B18",
+                        "deviceGuid": "E59217D5-AE22-4856-B000-0C0A30B1503E",
                         "deviceName": "",
                         "imageurl": "",
                         "key": "device",
-                        "deviceUniqueId": "psoc6-irm-f5af3507"
+                        "deviceUniqueId": "psoc6-irm-f5af1921"
                     },
                     "telemetry": {
                         "deviceGuid": "",
@@ -277,8 +277,8 @@
                         "link": "https://www.youtube.com/embed/GVO9jPv0hC0?playlist=GVO9jPv0hC0&loop=1&autoplay=1",
                         "refresh": "",
                         "device": {
-                            "deviceGuid": "97968942-58B8-4F44-8A28-EB682D6D0B18",
-                            "deviceUniqueId": "psoc6-irm-f5af3507"
+                            "deviceGuid": "E59217D5-AE22-4856-B000-0C0A30B1503E",
+                            "deviceUniqueId": "psoc6-irm-f5af1921"
                         },
                         "attributes": {
                             "attribute": [
@@ -363,8 +363,8 @@
                         "link": "https://www.youtube.com/embed/ydHQUmh0g_4?start=21&end=28&playlist=ydHQUmh0g_4&loop=1&autoplay=1",
                         "refresh": "",
                         "device": {
-                            "deviceGuid": "97968942-58B8-4F44-8A28-EB682D6D0B18",
-                            "deviceUniqueId": "psoc6-irm-f5af3507"
+                            "deviceGuid": "E59217D5-AE22-4856-B000-0C0A30B1503E",
+                            "deviceUniqueId": "psoc6-irm-f5af1921"
                         },
                         "attributes": {
                             "attribute": [
@@ -449,8 +449,8 @@
                         "link": "https://www.youtube.com/embed/M7IdXA23JVI?playlist=M7IdXA23JVI&loop=1&autoplay=1",
                         "refresh": "",
                         "device": {
-                            "deviceGuid": "97968942-58B8-4F44-8A28-EB682D6D0B18",
-                            "deviceUniqueId": "psoc6-irm-f5af3507"
+                            "deviceGuid": "E59217D5-AE22-4856-B000-0C0A30B1503E",
+                            "deviceUniqueId": "psoc6-irm-f5af1921"
                         },
                         "attributes": {
                             "attribute": [
@@ -533,8 +533,8 @@
                 "contents": {
                     "Transformation": {
                         "device": {
-                            "deviceGuid": "97968942-58B8-4F44-8A28-EB682D6D0B18",
-                            "deviceUniqueId": "psoc6-irm-f5af3507"
+                            "deviceGuid": "E59217D5-AE22-4856-B000-0C0A30B1503E",
+                            "deviceUniqueId": "psoc6-irm-f5af1921"
                         },
                         "attributes": {
                             "attribute": [
@@ -543,20 +543,20 @@
                                     "attributeName": "version",
                                     "checked": "true",
                                     "dataType": "STRING",
-                                    "attributeLatestValue": "A-01.00.00",
-                                    "deviceUpdatedDate": "2025-03-28T18:39:48.793Z",
+                                    "attributeLatestValue": "S-01.00.00",
+                                    "deviceUpdatedDate": "2025-04-03T20:42:23.867Z",
                                     "gatewayUpdatedDate": "NA",
-                                    "attributeValue": "A-01.00.00"
+                                    "attributeValue": "S-01.00.00"
                                 },
                                 {
                                     "attributeGuid": "208FBE98-B555-4429-B5A0-2FBE006D03EF",
                                     "attributeName": "random",
                                     "checked": "false",
                                     "dataType": "INTEGER",
-                                    "attributeLatestValue": "98",
-                                    "deviceUpdatedDate": "2025-03-28T18:39:48.793Z",
+                                    "attributeLatestValue": "74",
+                                    "deviceUpdatedDate": "2025-04-03T20:42:23.867Z",
                                     "gatewayUpdatedDate": "NA",
-                                    "attributeValue": "98"
+                                    "attributeValue": "74"
                                 },
                                 {
                                     "attributeGuid": "1831F106-89F0-4745-A25B-32A202692B27",
@@ -564,7 +564,7 @@
                                     "checked": "false",
                                     "dataType": "STRING",
                                     "attributeLatestValue": "not-detected",
-                                    "deviceUpdatedDate": "2025-03-28T18:39:48.793Z",
+                                    "deviceUpdatedDate": "2025-04-03T20:42:23.867Z",
                                     "gatewayUpdatedDate": "NA",
                                     "attributeValue": "not-detected"
                                 },
@@ -612,7 +612,7 @@
                             },
                             {
                                 "condition": "eq",
-                                "conditionValue": " S-01.00.00",
+                                "conditionValue": "S-01.00.00",
                                 "type": "Url",
                                 "errors": "",
                                 "typeValue": "https://saleshosted.z13.web.core.windows.net/media/ifx/IFX-EW25/v-siren.png"
@@ -659,8 +659,8 @@
                 "titleAlign": "",
                 "contents": {
                     "control": {
-                        "device": "psoc6-irm-f5af3507",
-                        "deviceGuid": "97968942-58B8-4F44-8A28-EB682D6D0B18",
+                        "device": "psoc6-irm-f5af1921",
+                        "deviceGuid": "E59217D5-AE22-4856-B000-0C0A30B1503E",
                         "controlType": "switch",
                         "leftText": "off",
                         "leftCommand": "board-user-led",
@@ -711,8 +711,8 @@
                         "link": "https://www.youtube.com/embed/ob6-E9P4ew4?playlist=ob6-E9P4ew4&loop=1&autoplay=1",
                         "refresh": "",
                         "device": {
-                            "deviceGuid": "97968942-58B8-4F44-8A28-EB682D6D0B18",
-                            "deviceUniqueId": "psoc6-irm-f5af3507"
+                            "deviceGuid": "E59217D5-AE22-4856-B000-0C0A30B1503E",
+                            "deviceUniqueId": "psoc6-irm-f5af1921"
                         },
                         "attributes": {
                             "attribute": [
@@ -797,8 +797,8 @@
                         "link": "https://www.youtube.com/embed/n-R3LzEtumg?playlist=n-R3LzEtumg&loop=1&autoplay=1",
                         "refresh": "",
                         "device": {
-                            "deviceGuid": "97968942-58B8-4F44-8A28-EB682D6D0B18",
-                            "deviceUniqueId": "psoc6-irm-f5af3507"
+                            "deviceGuid": "E59217D5-AE22-4856-B000-0C0A30B1503E",
+                            "deviceUniqueId": "psoc6-irm-f5af1921"
                         },
                         "attributes": {
                             "attribute": [
@@ -871,7 +871,7 @@
         {
             "widgetGuid": "54D7CC1A-AB35-499E-85D7-2BC3D17526B0",
             "widgetProperties": {
-               "i": "pie",
+                "i": "pie",
                 "background": "#0c8276",
                 "fontColor": "#ffffff",
                 "fontFamily": "Proxima Nova",
@@ -881,8 +881,8 @@
                 "contents": {
                     "pie": {
                         "device": {
-                            "deviceGuid": "97968942-58B8-4F44-8A28-EB682D6D0B18",
-                            "deviceUniqueId": "psoc6-irm-f5af3507"
+                            "deviceGuid": "E59217D5-AE22-4856-B000-0C0A30B1503E",
+                            "deviceUniqueId": "psoc6-irm-f5af1921"
                         },
                         "attributes": {
                             "attribute": [
