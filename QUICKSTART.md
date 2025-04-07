@@ -181,3 +181,7 @@ Detected snore
 
 ## 15. Application Examples / Use-cases
 See see some examples of how these models can be used with /IOTCONNECT to solve real-world solutions, explore the application examples in the [files](files/) directory.
+
+## 16. Resources
+[Webinar Slides]()
+[DEEPCRAFT Orderable Part Numbers]()
