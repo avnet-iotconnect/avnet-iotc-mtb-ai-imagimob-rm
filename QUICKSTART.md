@@ -184,4 +184,4 @@ See see some examples of how these models can be used with /IOTCONNECT to solve 
 
 ## 16. Resources
 * [Webinar Slides](files/Infineon-PSOC6-AI-Use-Cases-Apr2025.pdf)
-* [DEEPCRAFT Orderable Part Numbers](DEEPCRAFT_ready_model_orderable.pdf)
+* [DEEPCRAFT Orderable Part Numbers](files/DEEPCRAFT_ready_model_orderable.pdf)
