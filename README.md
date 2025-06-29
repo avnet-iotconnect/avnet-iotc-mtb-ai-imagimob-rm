@@ -94,4 +94,4 @@ The following commands can be sent to the device using the /IOTCONNECT Web UI:
 
 
 ## Other /IOTCONNECT-enabled Infineon Kits
-See the list [here](https://avnet-iotconnect.github.io/#infineon-technologies)
+See the list [here](https://avnet-iotconnect.github.io/partners/infineon/)
