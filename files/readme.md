@@ -21,13 +21,18 @@ Ensure all prerequisites from the QuickStart Guide are met before proceeding wit
 
 ![Factory Alarm Dashboard](./factory-alarm/factory_alarm_dashboard.png)
 
+
 ### 2. [Fall Detection](https://github.com/avnet-iotconnect/avnet-iotc-mtb-ai-imagimob-rm/tree/main/files/fall-detection)
 - **Purpose**: Accurately detect fall events using accelerometer-based AI models, providing crucial support in elderly care settings or hazardous work environments.
 - **Deepcraft Ready Model**: [Fall Detection](https://github.com/avnet-iotconnect/avnet-iotc-mtb-ai-fall-detection)
 - **Dashboard File**: `fall-detection/dashboard.json`
 - **Usage Instructions**: See the `README.md` within the `fall-detection` directory for detailed setup and operational instructions.
 
-![Fall Detection Dashboard](./fall-detection/fall_detection_dashboard.png)
+<p align="center">
+  <a href="https://youtu.be/9s7ED_jSJwU" target="_blank">
+    <img src="https://img.youtube.com/vi/9s7ED_jSJwU/maxresdefault.jpg" alt="Watch the Demo Video" width="720">
+  </a>
+</p>
 
 ### 3. [Gesture Detection](https://github.com/avnet-iotconnect/avnet-iotc-mtb-ai-imagimob-rm/tree/main/files/gesture-detection)
 - **Purpose**: Interpret and respond to hand gestures using machine learning, enabling intuitive, hands-free interaction for various IoT applications.
