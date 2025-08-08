@@ -35,6 +35,8 @@ build/
 Debug/
 Release/
 *_build/
+.clangd
+.ninja_*
 
 # Eclipse IDE for ModusToolbox files. Comment those files if you want to track them
 .metadata/
