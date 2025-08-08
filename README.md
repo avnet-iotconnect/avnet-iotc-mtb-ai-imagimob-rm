@@ -29,11 +29,16 @@ To quickly evaluate this project without compiling code follow the step-by-step 
 
 ## Supported Toolchains (make variable 'TOOLCHAIN')
 
-* GNU Arm® Embedded Compiler (GCC_ARM) - Default value of TOOLCHAIN
+* GNU Arm® Embedded Compiler (GCC_ARM) Version 11.3.1 (14 should work as well) - Default value of TOOLCHAIN
+
+> [!IMPORTANT]
+> As of 8/8/2025 the older version v1.0.0 of this application and older will not work with any MTB Tools versions 
+> Due to a problem with incompatibility with retarget-io and the latest BSP.
+> Please use v1.1.0 and later versions.
 
 ## Supported Boards
 
-The code has been developed and tested with MTB 3.3, with VsCode, and the board(s) below:
+The code has been developed and tested with MTB 3.5, with VsCode, and the board(s) below:
 
 ### Supported kits (make variable 'TARGET')
 
